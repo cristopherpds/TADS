@@ -44,4 +44,15 @@ public class Cachorro {
   public void setForcaDaMordida(float forcaDaMordida) {
     this.forcaDaMordida = forcaDaMordida;
   }
+
+  public void latir() {
+        System.out.println(nome + " está latindo! Ahu ahu auh");
+    }
+
+  @Override
+  public String toString() {
+    return "Cachorro [nome=" + nome + ", idade=" + idade + ", quantVida=" + quantVida + ", corDoPelo=" + corDoPelo
+        + ", forcaDaMordida=" + forcaDaMordida + "]";
+  }
+
 }
