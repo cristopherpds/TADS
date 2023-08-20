@@ -3,6 +3,7 @@ public class ContaBancaria {
   private int numeroConta;
   private double saldo;
   private boolean contaAtiva;
+  private float seguranca;
 
   public String getTitular() {
     return titular;
@@ -36,32 +37,40 @@ public class ContaBancaria {
     this.contaAtiva = contaAtiva;
   }
 
+  public float getSeguranca() {
+    return seguranca;
+  }
 
-    public void depositar(double valor) {
-        if (contaAtiva && valor > 0) {
-            saldo += valor;
-            System.out.println("Depósito realizado. Novo saldo: " + saldo);
-        } else {
-            System.out.println("Não foi possível realizar o depósito. Conta bloqueada");
-        }
-    }
+  public void setSeguranca(float seguranca) {
+    this.seguranca = seguranca;
+  }
 
-    public void sacar(double valor) {
-        if (contaAtiva && valor > 0 && saldo >= valor) {
-            saldo -= valor;
-            System.out.println("Saque realizado. Novo saldo: " + saldo);
-        } else {
-            System.out.println("Não foi possível realizar o saque. Conta bloqueada");
-        }
+  public void depositar(double valor) {
+    if (contaAtiva && valor > 0) {
+      saldo += valor;
+      System.out.println("Depósito realizado. Novo saldo: " + saldo);
+    } else {
+      System.out.println("Não foi possível realizar o depósito. Conta bloqueada");
     }
+  }
 
-    public void mostrarSaldo() {
-        System.out.println( titular +" Tem o saldo atual de: " + saldo);
+  public void sacar(double valor) {
+    if (contaAtiva && valor > 0 && saldo >= valor) {
+      saldo -= valor;
+      System.out.println("Saque realizado. Novo saldo: " + saldo);
+    } else {
+      System.out.println("Não foi possível realizar o saque. Conta bloqueada");
     }
+  }
+
+  public void mostrarSaldo() {
+    System.out.println(titular + " Tem o saldo atual de: " + saldo);
+  }
 
   @Override
   public String toString() {
     return "ContaBancaria [titular=" + titular + ", numeroConta=" + numeroConta + ", saldo=" + saldo + ", contaAtiva="
-        + contaAtiva + "]";
+        + contaAtiva + ", seguranca=" + seguranca + "]";
   }
+
 }
