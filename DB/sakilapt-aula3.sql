@@ -40,5 +40,20 @@ select loja_id, count(*)
 from funcionario
 group by loja_id;
 
+# qual os clientes que ja pagaram mais que 100?
+select cliente_id
+from pagamento
+group by  cliente_id
+having SUM(valor) > 100;
+
+# mostre priemero e ultimo nome dos cleintes, ordenados pelo
+# ultimo nome em ordem ascendente e pelo primero nome de forma decendente
+
+select primeiro_nome, ultimo_nome 
+from cliente
+order by primeiro_nome desc, ultimo_nome;
+
+
+
 
 
