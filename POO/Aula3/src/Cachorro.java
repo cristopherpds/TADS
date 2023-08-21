@@ -4,9 +4,18 @@ public class Cachorro {
   private float quantVida;
   private String corDoPelo;
   private float forcaDaMordida;
+  private float velocidade;
 
   public String getNome() {
     return nome;
+  }
+
+  public float getVelocidade() {
+    return velocidade;
+  }
+
+  public void setVelocidade(float velocidade) {
+    this.velocidade = velocidade;
   }
 
   public void setNome(String nome) {
@@ -49,10 +58,14 @@ public class Cachorro {
         System.out.println(nome + " está latindo! Ahu ahu auh");
     }
 
+    public void pegarBola() {
+      System.out.println(nome + " pegou a bola!");
+    }
+    
   @Override
   public String toString() {
     return "Cachorro [nome=" + nome + ", idade=" + idade + ", quantVida=" + quantVida + ", corDoPelo=" + corDoPelo
-        + ", forcaDaMordida=" + forcaDaMordida + "]";
+        + ", forcaDaMordida=" + forcaDaMordida + ", velocidade=" + velocidade + "]";
   }
 
 }

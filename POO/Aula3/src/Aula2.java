@@ -26,13 +26,16 @@ public class Aula2 {
         contaBancaria.setNumeroConta(1234);
         contaBancaria.setSaldo(1000);
         contaBancaria.setContaAtiva(false);
+        contaBancaria.setSeguranca(50);
 
         System.out.println(contaBancaria.toString());
     
         //Acoes
-        cachorro.latir();
         contaBancaria.mostrarSaldo();
-        contaBancaria.depositar(100);
         contaBancaria.sacar(200);
+        
+        pessoa.jogarBolaComCachorro(cachorro);
+        pessoa.realizarTransacao(contaBancaria, 100);
+        cachorro.latir();
     }
 }
