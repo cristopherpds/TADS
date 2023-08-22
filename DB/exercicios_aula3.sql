@@ -42,11 +42,11 @@ from cliente
 where data_criacao > '2020-01-06';
 
 # 9. Quantos alugueis foram realizados pelos clientes de id maior do que 100 e que tenham realizados mais do que 20 alugueis.
-select c.cliente_id, c.primeiro_nome as nome_cliente, count(a.aluguel_id) as quantidade_alugueis
+select c.cliente_id, count(a.aluguel_id) as quantidade_alugueis
 from cliente c
 join aluguel a on c.cliente_id = a.cliente_id
 where c.cliente_id > 100
-group by c.cliente_id, c.primeiro_nome
+group by c.cliente_id
 having quantidade_alugueis > 20;
 
 # 10. Listar o primeiro e ultimo nome de todos os funcionários, ordenados pelo seu usuário, mas apenas aqueles que não tenham a senha cadastrada.
