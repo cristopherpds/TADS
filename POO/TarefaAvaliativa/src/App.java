@@ -7,6 +7,17 @@ class Item {
     private String validade;
     private int quantidade;
 
+    /*
+     * Exercício 2:
+     * Ao remover o construtor padrao da classe Item, o programa não consegue mais
+     * criar
+     * instâncias dessa classe sem fornecer os parâmetros necessários (nome, custo e
+     * quantidade).
+     * isso resulta em um erro de compilação indicando que o construtor Item(String,
+     * double, int)
+     * não pode ser encontrado.
+     */
+    
     public Item(String nome, double custo, int quantidade) {
         this.nome = nome;
         this.custo = custo;
@@ -45,7 +56,7 @@ public class App {
         while (true) {
             System.out.print("Digite o nome do produto (ou 'sair' para encerrar): ");
             String nome = scanner.nextLine();
-            
+
             if (nome.equalsIgnoreCase("sair")) {
                 break;
             }
@@ -67,6 +78,7 @@ public class App {
             sbEstoque.append("\n");
         }
 
+        System.out.println("\n");
         System.out.println("Estoque cadastrado com sucesso:");
         System.out.println(sbEstoque.toString());
         scanner.close();
