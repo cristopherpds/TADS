@@ -17,7 +17,7 @@ class Item {
      * double, int)
      * não pode ser encontrado.
      */
-    
+
     public Item(String nome, double custo, int quantidade) {
         this.nome = nome;
         this.custo = custo;
@@ -51,7 +51,7 @@ public class App {
         StringBuilder sbEstoque = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Bem-vindo ao sistema de estoque!");
+        System.out.println("Bem-vindo ao sistema de estoque!\n");
 
         while (true) {
             System.out.print("Digite o nome do produto (ou 'sair' para encerrar): ");
