@@ -12,8 +12,6 @@ public class App {
         caminhao.retirarCarga();
         caminhao.retirarCarga();
         caminhao.retirarCarga(); */
-        
-
         while (true) {
             String[] opcoes = { "Adicionar Carga", "Mostrar Espaço Restante", "Retirar Carga Mais Próxima", "Sair" };
             int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Caminhão Transportadora",
