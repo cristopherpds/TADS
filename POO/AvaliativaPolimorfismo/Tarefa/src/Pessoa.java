@@ -35,7 +35,7 @@ public class Pessoa {
 
   @Override
   public String toString() {
-    return "Pessoa [nome=" + nome + ", idade=" + idade + ", endereco=" + endereco + ", salarioAcresimo=" + calcularSalario() + "]";
+    return "Pessoa [nome=" + nome + ", idade=" + idade + ", endereco=" + endereco + "]";
   }
 
   public double calcularSalario() {
