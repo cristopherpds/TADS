@@ -20,4 +20,9 @@ class Vendedor extends Pessoa {
   public double calcularSalario() {
     return salario * 1.3;
   }
+
+  @Override
+    public String toString() {
+        return "Vendedor";
+    }
 }

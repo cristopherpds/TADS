@@ -20,4 +20,9 @@ class Gerente extends Pessoa {
   public double calcularSalario() {
     return salario * 1.2;
   }
+
+  @Override
+  public String toString() {
+    return "Gerente";
+  }
 }

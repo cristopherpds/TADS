@@ -20,4 +20,9 @@ class Programador extends Pessoa {
   public double calcularSalario() {
     return salario * 1.1;
   }
+
+  @Override
+  public String toString() {
+    return "Programador";
+  }
 }

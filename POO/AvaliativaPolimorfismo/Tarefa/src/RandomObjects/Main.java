@@ -43,6 +43,7 @@ public class Main {
     for (int i = 0; i < pessoas.size(); i++) {
       Pessoa pessoa = pessoas.get(i);
       System.out.println("ID: " + (i + 1));
+      System.out.println("Tipo: " + pessoa.toString());
       System.out.println("Nome: " + pessoa.getNome());
       System.out.println("Idade: " + pessoa.getIdade());
       System.out.println("Endereço: " + pessoa.getEndereco());
