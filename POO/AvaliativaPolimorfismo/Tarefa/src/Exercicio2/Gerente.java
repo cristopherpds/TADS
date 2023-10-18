@@ -1,9 +1,9 @@
-package RandomObjects;
+package Exercicio2;
 
-class Vendedor extends Pessoa {
+class Gerente extends Pessoa {
   private double salario;
 
-  public Vendedor(String nome, int idade, String endereco, double salario) {
+  public Gerente(String nome, int idade, String endereco, double salario) {
     super(nome, idade, endereco);
     this.salario = salario;
   }
@@ -18,11 +18,11 @@ class Vendedor extends Pessoa {
 
   @Override
   public double calcularSalario() {
-    return salario * 1.3;
+    return salario * 1.2;
   }
 
   @Override
-    public String toString() {
-        return "Vendedor";
-    }
+  public String toString() {
+    return "Gerente";
+  }
 }

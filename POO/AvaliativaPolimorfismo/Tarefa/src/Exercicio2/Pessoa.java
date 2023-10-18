@@ -1,4 +1,4 @@
-package RandomObjects;
+package Exercicio2;
 abstract class Pessoa {
   private String nome;
   private int idade;

@@ -1,4 +1,4 @@
-package RandomObjects;
+package Exercicio2;
 
 class Programador extends Pessoa {
   private double salario;
