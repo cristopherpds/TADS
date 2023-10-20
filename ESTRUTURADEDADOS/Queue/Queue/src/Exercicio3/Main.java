@@ -72,7 +72,7 @@ public class Main {
       clientesAtendidos.append("Salário: ").append(cliente.calcularSalario()).append("\n\n");
     }
 
-    StringBuilder divisor = new StringBuilder("-------------------------------------------------------\n\n");
+    StringBuilder divisor = new StringBuilder("-------------------------------------------------------\n");
 
     StringBuilder clientesFila = new StringBuilder(
         fila.isEmpty() ? "Não há clientes na fila!\n" : "Clientes na fila:\n");
