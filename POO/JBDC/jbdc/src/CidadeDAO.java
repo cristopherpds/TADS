@@ -10,14 +10,14 @@ public class CidadeDAO {
     Connection conn = null;
     PreparedStatement pstm = null;
     ResultSet rst = null;
-    //String sql = "SELECT * FROM	cidade";
-    //String sql2 = "SELECT * FROM	cidade WHERE id % 2 = 0";
+    String sql = "SELECT * FROM	cidade";
+    String sql2 = "SELECT * FROM	cidade WHERE id % 2 = 0";
     String sql3 = "SELECT * FROM	cidade WHERE nome LIKE 'A%'";
     List<EstadoCidade> cidades = new ArrayList<EstadoCidade>();
 
     try {
       conn = ConnectionFactory.createConnectionToMySQL();
-      pstm = conn.prepareStatement(sql3);
+      pstm = conn.prepareStatement(sql);
       rst = pstm.executeQuery();
 
       while (rst.next()) {
@@ -26,7 +26,6 @@ public class CidadeDAO {
         cidade.setNome(rst.getString("nome"));
         cidade.setEstado(rst.getInt("estado"));
         cidades.add(cidade);
-
       }
 
     } catch (SQLException e) {
