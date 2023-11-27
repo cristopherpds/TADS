@@ -113,3 +113,48 @@ INSERT INTO Manutencao (id, dataManutencao, descricaoManutencao, custosManutenca
 (9, '2023-10-05', 'Configuração de Rede', 180.00, 9),
 (10, '2023-11-02', 'Limpeza do Sensor', 70.00, 10);
 
+
+
+-- Consultas e RelatóriosTarefa
+
+-- Listar todos os ativos
+DELIMITER //
+CREATE PROCEDURE ListarTodosAtivos()
+BEGIN
+  SELECT * FROM Ativos;
+END //
+DELIMITER ;
+
+-- Buscar ativos por tipo
+DELIMITER //
+CREATE FUNCTION BuscarAtivosPorTipo(tipoAtivoId INT)
+RETURNS TABLE
+RETURN SELECT * FROM Ativos WHERE tipoAtivoId = tipoAtivoId;
+DELIMITER ;
+
+-- Adicionar um novo usuário
+DELIMITER //
+CREATE PROCEDURE AdicionarNovoUsuario(IN nomeUsuario VARCHAR(255), IN cargo VARCHAR(255), IN email VARCHAR(255), IN telefone VARCHAR(255), IN endereco VARCHAR(255))
+BEGIN
+  INSERT INTO Usuarios (nomeUsuario, cargo, email, telefone, endereco) VALUES (nomeUsuario, cargo, email, telefone, endereco);
+END //
+DELIMITER ;
+
+-- Atualizar detalhes do ativo
+DELIMITER //
+CREATE PROCEDURE AtualizarDetalhesAtivo(IN id INT, IN nomeAtivo VARCHAR(255), IN numeroSerie VARCHAR(255), IN modelo VARCHAR(255), IN especificacoesTecnicas TEXT, IN dataAquisicao DATETIME, IN tipoAtivoId INT)
+BEGIN
+  UPDATE Ativos SET nomeAtivo = nomeAtivo, numeroSerie = numeroSerie, modelo = modelo, especificacoesTecnicas = especificacoesTecnicas, dataAquisicao = dataAquisicao, tipoAtivoId = tipoAtivoId WHERE id = id;
+END //
+DELIMITER ;
+
+-- Excluir um ativo
+DELIMITER //
+CREATE TRIGGER ExcluirAtivo
+AFTER DELETE ON Ativos
+FOR EACH ROW
+BEGIN
+  DELETE FROM Ativos WHERE id = OLD.id;
+END; //
+DELIMITER ;
+
