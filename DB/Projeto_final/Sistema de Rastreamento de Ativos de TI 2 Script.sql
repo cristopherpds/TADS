@@ -47,71 +47,69 @@ CREATE TABLE Manutencao (
   FOREIGN KEY (idAtivo) REFERENCES Ativos (id)
 );
 
--- Inserindo 10 dados fictícios na tabela TiposAtivos
+
+-- Inserindo dados na tabela TiposAtivos
 INSERT INTO TiposAtivos (id, nomeTipo, descricaoTipo) VALUES
-(1, 'Computador', 'Computadores de mesa'),
-(2, 'Notebook', 'Laptops portáteis'),
-(3, 'Impressora', 'Impressoras laser e jato de tinta'),
-(4, 'Monitor', 'Monitores LCD e LED'),
-(5, 'Teclado', 'Teclados USB'),
-(6, 'Mouse', 'Mouses sem fio'),
-(7, 'Projetor', 'Projetores de alta resolução'),
-(8, 'Telefone', 'Telefones VoIP'),
-(9, 'Servidor', 'Servidores de alto desempenho'),
-(10, 'Scanner', 'Scanners de documentos');
+(1, 'Computador', 'Dispositivo eletrônico para processamento de dados.'),
+(2, 'Impressora', 'Dispositivo para imprimir documentos e imagens.'),
+(3, 'Telefone', 'Aparelho de comunicação.'),
+(4, 'Monitor', 'Dispositivo de saída que exibe informações visuais.'),
+(5, 'Teclado', 'Dispositivo de entrada para inserção de dados.'),
+(6, 'Mouse', 'Dispositivo apontador para interação com o computador.'),
+(7, 'Roteador', 'Dispositivo de rede para conexão à internet.'),
+(8, 'Servidor', 'Computador central para fornecer serviços a outras máquinas.'),
+(9, 'Switch', 'Dispositivo de rede para conectar vários dispositivos.'),
+(10, 'Câmera', 'Dispositivo para capturar imagens e vídeos.');
 
--- Inserindo 10 dados fictícios na tabela Ativos
+-- Inserindo dados na tabela Ativos
 INSERT INTO Ativos (id, nomeAtivo, numeroSerie, modelo, especificacoesTecnicas, dataAquisicao, tipoAtivoId) VALUES
-(1, 'PC001', 'SN12345', 'Dell Optiplex', 'CPU: i7, RAM: 8GB, HDD: 1TB', '2023-01-15 10:00:00', 1),
-(2, 'Laptop001', 'SN67890', 'HP EliteBook', 'CPU: i5, RAM: 16GB, SSD: 256GB', '2023-02-20 14:30:00', 2),
-(3, 'Printer001', 'SN54321', 'Epson WorkForce', 'Impressora a jato de tinta', '2023-03-10 08:45:00', 3),
-(4, 'Monitor001', 'SN98765', 'LG Ultrawide', 'Resolução: 2560x1080, 29 polegadas', '2023-04-05 12:15:00', 4),
-(5, 'Teclado001', 'SN11111', 'Logitech K780', 'Teclado sem fio', '2023-05-15 15:30:00', 5),
-(6, 'Mouse001', 'SN22222', 'Microsoft Wireless Mouse', 'Mouse óptico sem fio', '2023-06-20 11:45:00', 6),
-(7, 'Projetor001', 'SN33333', 'BenQ HD Projector', 'Projetor de alta definição', '2023-07-01 09:00:00', 7),
-(8, 'Telefone001', 'SN44444', 'Cisco VoIP Phone', 'Telefone VoIP para escritórios', '2023-08-10 14:30:00', 8),
-(9, 'Servidor001', 'SN55555', 'HP ProLiant', 'Servidor empresarial', '2023-09-05 08:45:00', 9),
-(10, 'Scanner001', 'SN66666', 'Epson Document Scanner', 'Scanner de documentos de alta velocidade', '2023-10-10 12:15:00', 10);
+(1, 'PC001', 'SN12345', 'Dell OptiPlex', '8GB RAM, 256GB SSD', '2023-01-15', 1),
+(2, 'Imp001', 'SN67890', 'HP LaserJet', 'Impressão em preto e branco', '2022-12-20', 2),
+(3, 'Tel001', 'SN54321', 'iPhone 13', '128GB de armazenamento', '2023-02-28', 3),
+(4, 'Monitor001', 'SN98765', 'Samsung 24"', 'Resolução 1920x1080', '2023-03-10', 4),
+(5, 'Teclado001', 'SN24680', 'Logitech K120', 'Layout ABNT2', '2023-04-05', 5),
+(6, 'Mouse001', 'SN13579', 'Microsoft Wireless', 'Conexão Bluetooth', '2023-05-20', 6),
+(7, 'Roteador001', 'SN11223', 'TP-Link Archer C7', 'Wi-Fi 5 (802.11ac)', '2023-06-15', 7),
+(8, 'Servidor001', 'SN99887', 'Dell PowerEdge', 'Xeon Processor, 16GB RAM', '2023-07-30', 8),
+(9, 'Switch001', 'SN665544', 'Cisco Catalyst 2960', '24 portas Gigabit Ethernet', '2023-08-25', 9),
+(10, 'Câmera001', 'SN443322', 'Sony Alpha a6000', 'Sensor APS-C, 24MP', '2023-09-12', 10);
 
--- Inserindo 10 dados fictícios na tabela Usuarios
-INSERT INTO Usuarios (id, nomeUsuario, cargo, informacoesContato) VALUES
-(1, 'Admin1', 'Admin', 'admin1@email.com'),
-(2, 'Usuario1', 'Usuario', 'usuario1@email.com'),
-(3, 'Tecnico1', 'Tecnico', 'tecnico1@email.com'),
-(4, 'Admin2', 'Admin', 'admin2@email.com'),
-(5, 'Usuario2', 'Usuario', 'usuario2@email.com'),
-(6, 'Tecnico2', 'Tecnico', 'tecnico2@email.com'),
-(7, 'Admin3', 'Admin', 'admin3@email.com'),
-(8, 'Usuario3', 'Usuario', 'usuario3@email.com'),
-(9, 'Tecnico3', 'Tecnico', 'tecnico3@email.com'),
-(10, 'Admin4', 'Admin', 'admin4@email.com');
+-- Inserindo dados na tabela Usuarios
+INSERT INTO Usuarios (id, nomeUsuario, cargo, email, telefone, endereco) VALUES
+(1, 'João', 'Admin', 'joao@email.com', '(11) 1234-5678', 'Rua A, 123'),
+(2, 'Maria', 'Usuário', 'maria@email.com', '(11) 9876-5432', 'Rua B, 456'),
+(3, 'Pedro', 'Técnico', 'pedro@email.com', '(11) 5555-4444', 'Rua C, 789'),
+(4, 'Lucia', 'Admin', 'lucia@email.com', '(11) 2222-3333', 'Rua D, 789'),
+(5, 'Ana', 'Usuário', 'ana@email.com', '(11) 8888-9999', 'Rua E, 456'),
+(6, 'Marcos', 'Técnico', 'marcos@email.com', '(11) 7777-8888', 'Rua F, 123'),
+(7, 'Carla', 'Admin', 'carla@email.com', '(11) 6666-7777', 'Rua G, 789'),
+(8, 'Roberto', 'Usuário', 'roberto@email.com', '(11) 3333-2222', 'Rua H, 456'),
+(9, 'Sandra', 'Técnico', 'sandra@email.com', '(11) 9999-8888', 'Rua I, 123'),
+(10, 'Paulo', 'Admin', 'paulo@email.com', '(11) 4444-5555', 'Rua J, 789');
 
--- Inserindo 10 dados fictícios na tabela Movimentacao
+-- Inserindo dados na tabela Movimentacao
 INSERT INTO Movimentacao (id, dataMovimentacao, localizacaoAnterior, localizacaoAtual, idAtivo, idUsuario) VALUES
-(1, '2023-05-01 09:00:00', 'Sala 101', 'Sala 102', 1, 1),
-(2, '2023-05-10 14:30:00', 'Sala 102', 'Sala 103', 1, 2),
-(3, '2023-05-15 08:45:00', 'Sala 103', 'Sala 101', 1, 3),
-(4, '2023-06-01 10:30:00', 'Escritório A', 'Sala de Reunião 1', 2, 4),
-(5, '2023-06-10 15:15:00', 'Sala de Reunião 1', 'Sala de Reunião 2', 2, 5),
-(6, '2023-06-15 11:30:00', 'Sala de Reunião 2', 'Escritório B', 2, 6),
-(7, '2023-07-01 09:30:00', 'Sala 201', 'Sala 202', 3, 7),
-(8, '2023-07-10 14:00:00', 'Sala 202', 'Sala 203', 3, 8),
-(9, '2023-07-15 08:00:00', 'Sala 203', 'Sala 201', 3, 9),
-(10, '2023-08-01 11:45:00', 'Recepção', 'Sala 101', 4, 10);
+(1, '2023-01-20', 'Sala A', 'Sala B', 1, 2),
+(2, '2023-02-15', 'Depósito', 'Sala Principal', 2, 3),
+(3, '2023-03-10', 'Almoxarifado', 'Sala de Reuniões', 3, 4),
+(4, '2023-04-05', 'Sala 1', 'Sala 2', 4, 5),
+(5, '2023-05-01', 'Recepção', 'Escritório', 5, 6),
+(6, '2023-06-20', 'Andar 1', 'Andar 2', 6, 7),
+(7, '2023-07-15', 'Sala de Descanso', 'Cozinha', 7, 8),
+(8, '2023-08-10', 'Corredor Principal', 'Sala de Treinamento', 8, 9),
+(9, '2023-09-25', 'Sala 3', 'Sala 4', 9, 10),
+(10, '2023-10-12', 'Sala de TI', 'Sala de Servidores', 10, 1);
 
--- Inserindo 10 dados fictícios na tabela Manutencao
+-- Inserindo dados na tabela Manutencao
 INSERT INTO Manutencao (id, dataManutencao, descricaoManutencao, custosManutencao, idAtivo) VALUES
-(1, '2023-05-20 11:00:00', 'Substituição do disco rígido', 120.50, 1),
-(2, '2023-06-05 13:30:00', 'Limpeza e manutenção preventiva', 50.25, 2),
-(3, '2023-07-10 09:15:00', 'Troca de toner', 30.00, 3),
-(4, '2023-08-15 14:45:00', 'Atualização de firmware', 25.75, 4),
-(5, '2023-09-01 10:30:00', 'Substituição de cabo de rede', 15.20, 5),
-(6, '2023-10-05 08:00:00', 'Reparo de lente quebrada', 40.60, 6),
-(7, '2023-11-10 12:30:00', 'Limpeza e ajuste de foco', 35.30, 7),
-(8, '2023-12-15 13:45:00', 'Substituição de peça danificada', 60.75, 8),
-(9, '2024-01-20 09:30:00', 'Manutenção preventiva', 75.40, 9),
-(10, '2024-02-25 14:15:00', 'Reparo de sistema operacional', 55.90, 10);
-
-
-
+(1, '2023-02-01', 'Troca de HD', 250.00, 1),
+(2, '2023-03-18', 'Limpeza dos Rolos', 100.00, 2),
+(3, '2023-04-20', 'Atualização de Sistema', 150.00, 3),
+(4, '2023-05-10', 'Calibração de Cores', 80.00, 4),
+(5, '2023-06-05', 'Substituição de Teclas', 50.00, 5),
+(6, '2023-07-30', 'Manutenção de Conexão', 120.00, 6),
+(7, '2023-08-25', 'Atualização de Firmware', 90.00, 7),
+(8, '2023-09-15', 'Revisão Geral', 200.00, 8),
+(9, '2023-10-05', 'Configuração de Rede', 180.00, 9),
+(10, '2023-11-02', 'Limpeza do Sensor', 70.00, 10);
 
