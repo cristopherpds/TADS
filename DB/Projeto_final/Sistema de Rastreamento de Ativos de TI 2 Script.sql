@@ -156,7 +156,7 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL AtualizarDetalhesAtivo(10, "'Câmera001'", "'SN443322'", "'Sony Alpha a700'", "'Sensor APS-C, 32MP'", "'2023-27-11 00:00:00'", 10);
+CALL AtualizarDetalhesAtivo(10, "Câmera001", "SN443322", "Sony Alpha a700", "Sensor APS-C, 32MP", "2023-11-27 00:00:00", 10);
 
 
 --Log de alterações de ativos
@@ -200,6 +200,7 @@ BEGIN
 END //
 DELIMITER ;
 
+SELECT TotalAtivos();
 
 -- Procedimento para inseriri um novo ativo
 DELIMITER //
@@ -220,7 +221,7 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL DeletarAtivo(idDoAtivo);
+CALL DeletarAtivo(14);
 
 -- Trigger registo de insercao de ativo
 DELIMITER //
