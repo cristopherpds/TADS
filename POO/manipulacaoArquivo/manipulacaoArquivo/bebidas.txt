@@ -1,0 +1,3 @@
+coca;4;cocacola;10
+pepsi;3;pepsi;11
+fanta;4;fanta;20
