@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário</title>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>-Dados pessoais-</legend>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" /><br /><br />
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" /><br /><br />
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" /><br /><br />
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="sp">Sao Paulo</option>
+                <option value="sl">Santana do Livramento</option>
+            </select>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>Dados Profissionais</legend>
+            <label for="cargo">Natureza do Cargo:</label><br />
+            <input type="radio" name="cargo" id="gerencia" />
+            <label for="cargo">Gerencia</label>
+            <input type="radio" name="cargo" id="financiero" />
+            <label for="cargo">Financiero</label>
+            <input type="radio" name="cargo" id="recepcao" />
+            <label for="cargo">Recepcao</label>
+            <input type="radio" name="cargo" id="administrativo" />
+            <label for="cargo">Administrativo</label>
+            <input type="radio" name="cargo" id="juridico" />
+            <label for="cargo">Juridico</label><br>
+            <br>
+            <label for="interesse">Área de interesse</label><br />
+            <input type="checkbox" name="interesse" id="interesse" />
+            <label for="interesse">Gerencia</label>
+            <input type="checkbox" name="interesse" id="interesse" />
+            <label for="interesse">Financiero</label>
+            <input type="checkbox" name="interesse" id="interesse" />
+            <label for="interesse">Recepcao</label>
+            <input type="checkbox" name="interesse" id="interesse" />
+            <label for="interesse">Administrativo</label>
+            <input type="checkbox" name="interesse" id="interesse" />
+            <label for="interesse">Juridico</label>
+            <br>
+            <br>
+            <label for="mini-curriculo">Mini-curriculo:</label>
+            <textarea id="mini-curriculo" name="mini-curriculo" rows="4" cols="50"></textarea><br />
+        </fieldset>
+        <br />
+        <input id="btn" type="submit" value="Enviar" />
+        <input type="reset" value="Limpar" />
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
