@@ -17,6 +17,7 @@
     <EditText
         android:id='@+id/txtUser'
         android:layout_width="match_parent"
+        android:hint="Username"
         android:layout_margin="30dp"
         android:layout_height="wrap_content"
         />
@@ -25,6 +26,7 @@
         android:id='@+id/txtPassword'
         android:layout_width="match_parent"
         android:layout_margin="30dp"
+        android:hint="Password"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         />
