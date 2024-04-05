@@ -2,7 +2,7 @@ package com.mycompany.carro;
 
 import java.util.Date;
 
-public class Painel {
+public class Painel{
     Carro carro = new Carro(null, null, 0, 0, 0, null, null);
     Banco banco = new Banco(0, null, null, null, null, null);
     Farol farol = new Farol(null);
