@@ -47,14 +47,12 @@ public class Motor {
         this.marca = marca;
     }
 
-    public void ligar(){
-        this.desligado = false;
-        System.out.println("Motor ligado");
+    public Boolean ligar(){
+        return this.desligado = false;
     }
 
-    public void desligar(){
-        this.desligado = true;
-        System.out.println("Motor desligado");
+    public Boolean desligar(){
+        return this.desligado = true;
     }
 
     

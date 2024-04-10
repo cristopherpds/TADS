@@ -1,6 +1,7 @@
 package com.mycompany.carro;
 
 import java.util.Date;
+import java.util.Scanner;
 
 public class Painel{
     Carro carro = new Carro(null, null, 0, 0, 0, null, null);
@@ -39,19 +40,16 @@ public class Painel{
         motor.setPotencia(1020);
         motor.setCilindrada(4);
         motor.setMarca("Tesla");
-        motor.desligar();
-        motor.ligar();
 
         pneu.setLargura(9);
         pneu.setMarca("Pirelli");
         pneu.setPerfil("Baixo");
         pneu.setTamanho(19);
-        pneu.rodar();
+
 
         porta.setFechada(true);
         porta.setNumeroPortas(4);
         porta.setVidroFechado(true);
-        porta.abrir();
 
         sistemaEletrico.setBateriaCarregada(true);
         sistemaEletrico.setFusivels(true);
@@ -66,7 +64,28 @@ public class Painel{
         transmissao.setAutomatica(true);
         transmissao.setMarcha(1);
         transmissao.setTipo("Automático");
-        transmissao.trocarMarcha();
+
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Deseja ligar o carro: ");
+        String ligarCarro = scanner.nextLine();
+        if(ligarCarro.equalsIgnoreCase("sim")){
+            porta.fechar();
+            banco.ajustarAltura();
+            banco.ajustarLombar();
+            banco.aquecer();
+            motor.ligar();
+            farol.ligar();
+            transmissao.trocarMarcha();
+            pneu.rodar();
+            pneu.acelerar();
+            transmissao.trocarMarcha();
+            System.out.println("Carro ligado");
+        }else{
+            motor.desligar();
+        }
+        
     }
 
 }
