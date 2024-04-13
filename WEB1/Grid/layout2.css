@@ -1,0 +1,61 @@
+body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: "primeira-fila primeira-fila  primeira-fila primeira-fila"
+                "row1 row1 row1 row7"
+                "row2 row2 row2 row7"
+                "row3 row3 row3 row7"
+                "row4 row4 row4 row7"
+                "row5 row5 row5 row7"
+                "row6 row6 row6 row7"
+                "ultima-fila ultima-fila ultima-fila ultima-fila"
+                ;
+                row-gap: 8px;
+        }
+        .primeira-fila{
+            grid-area: primeira-fila;
+            background-color: #00ff00;
+        }
+        
+        .row1 {
+            grid-area: row1;
+            background-color: red;
+        }
+        .row2 {
+            grid-area: row2;
+            background-color: red;
+        }
+        .row3 {
+            grid-area: row3;
+            background-color: red;
+        }
+        .row4 {
+            grid-area: row4;
+            background-color: red;
+        }
+        .row5 {
+            grid-area: row5;
+            background-color: red;
+        }
+        .row6 {
+            grid-area: row6;
+            background-color: red;
+        }
+        .row7{
+            grid-area: row7;
+            background-color: blue;
+        }
+        .ultima-fila {
+            grid-area: ultima-fila;
+            background-color: #00ff00;
+        }

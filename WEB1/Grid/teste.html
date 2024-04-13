@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Grid</title>
+    </head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            /* Adicione uma linha extra */
+            grid-template-areas:
+                "primeira-fila primeira-fila primeira-fila primeira-fila sexta-fila"
+                "segunda-fila segunda-fila segunda-fila segunda-fila segunda-fila"
+                /* Faça sexta-fila ocupar a segunda linha */
+                "tercera-fila tercera-fila tercera-fila tercera-fila tercera-fila"
+                "quarta-fila quarta-fila quarta-fila quarta-fila quarta-fila"
+                "quinta-fila quinta-fila quinta-fila quinta-fila quinta-fila";
+        }
+
+        .primeira-fila {
+            grid-area: primeira-fila;
+            background-color: #000;
+            color: #fff;
+            height: 98px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .segunda-fila {
+            grid-area: segunda-fila;
+            background-color: #c4c4;
+            color: #fff;
+            height: 98px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tercera-fila {
+            grid-area: tercera-fila;
+            background-color: #000;
+            color: #fff;
+            height: 98px;
+        }
+
+        .quarta-fila {
+            grid-area: quarta-fila;
+            background-color: #c4c4;
+            color: #fff;
+            height: 98px;
+        }
+
+        .quarta-fila {
+            grid-area: quarta-fila;
+            background-color: #000;
+            color: #fff;
+            height: 98px;
+        }
+
+        .sexta-fila {
+            grid-area: sexta-fila;
+            background-color: rgba(235, 4, 235, 0.267);
+            grid-row: span 2;
+            color: #fff;
+            display: none;
+            height: 98px;
+        }
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="primeira-fila">
+                <div class=""></div>
+            </div>
+            <div class="segunda-fila">Altura 98px gap entre columnas: 2px</div>
+            <div class="tercera-fila">
+                <div class=""></div>
+            </div>
+            <div class="quarta-fila">
+                <div class=""></div>
+            </div>
+            <div class="quinta-fila">
+                <div class=""></div>
+            </div>
+            <div class="sexta-fila">
+                <div class=""></div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+</body>
+
+</html>
