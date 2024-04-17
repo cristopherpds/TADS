@@ -4,7 +4,6 @@
 
 package com.mycompany.carro;
 
-import java.util.Date;
 
 /**
  *
@@ -18,6 +17,15 @@ public class Carro {
     private int potencia;
     private String cor;
     private Double zeroACem;
+    private Pneu pneu;
+    private Motor motor;
+    private Banco banco;
+    private Farol farol;
+    private Transmissao transmissao;
+    private Porta porta;
+    private SistemaEletrico sistemaEletrico;
+    private TanqueCombustivel tanqueCombustivel;
+
     public void teste(){
         System.out.println("teste");
     }
@@ -93,6 +101,82 @@ public class Carro {
 
     public void setPotencia(int potencia) {
         this.potencia = potencia;
+    }
+
+    public void setPneu(Pneu p) {
+        this.pneu = p;
+    }
+
+    public Object getPneu() {
+        return pneu;
+    }
+
+    public void setBanco(Banco b) {
+        this.banco = b;
+    }
+
+    public Object getBanco() {
+        return banco;
+    }
+
+    public void setPorta(Porta p1) {
+        this.porta = p1;
+    }
+
+    public Object getPorta() {
+        return porta;
+    }
+
+    public void setTransmissao(Transmissao t) {
+        this.transmissao = t;
+    }
+
+    public Object getTransmissao() {
+        return transmissao;
+    }
+
+    public void setFarol(Farol f) {
+        this.farol = f;
+    }
+
+    public Object getFarol() {
+        return farol;
+    }
+
+    public void setTanqueCombustivel(TanqueCombustivel tC) {
+        this.tanqueCombustivel = tC;
+    }
+
+    public Object getTanqueCombustivel() {
+        return tanqueCombustivel;
+    }
+
+    public void setSistemaEletrico(SistemaEletrico sE) {
+        this.sistemaEletrico = sE;
+    }
+
+    public Object getSistemaEletrico() {
+        return sistemaEletrico;
+    }
+
+    public void setPainel(Pneu p) {
+        this.pneu = p;
+    }
+
+    public Object getPainel() {
+        return pneu;
+    }
+
+    public void setMotor(Motor m) {
+        this.motor = m;
+    }
+
+    public void ligar() {
+        System.out.println("Ligando...");
+    }
+
+    public boolean isLigado() {
+        return true;
     }
 
 }

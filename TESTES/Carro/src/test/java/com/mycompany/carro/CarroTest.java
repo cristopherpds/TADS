@@ -17,6 +17,15 @@ import static org.junit.Assert.*;
  */
 public class CarroTest {
     private Carro c;
+    private Pneu p;
+    private Banco b;
+    private Porta p1;
+    private Motor m;
+    private Transmissao t;
+    private Farol f;
+    private SistemaEletrico sE;
+    private TanqueCombustivel tC;
+
     public CarroTest() {
     }
     
@@ -30,7 +39,16 @@ public class CarroTest {
     
     @Before
     public void setUp() {
-        c = new Carro(null, null, 0, 0, 0, null, null);
+        c = new Carro("tesla", "tesla", 2021, 230, 200, "red", 4.1);
+        p = new Pneu(1, 2, "baixo", "pireli");
+        b = new Banco(0, true, true, false, true, true);
+        p1 = new Porta(true, 2, true);
+        m = new Motor("eletrico", 1200, 4, "tesla");
+        t = new Transmissao("automatica", 0,true);
+        f = new Farol(true);
+        sE = new SistemaEletrico(true, true);
+        tC = new TanqueCombustivel(100, "Hydrogeno", 50);
+        
     }
     
     @After
@@ -40,13 +58,68 @@ public class CarroTest {
     /**
      * Test of main method, of class Carro.
      */
+
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Main.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testeCarroPneu(){
+        c.setPneu(p);
+        assertEquals(c.getPneu(), p);
+    }
+
+    @Test
+    public void testeCarroBanco() {
+        c.setBanco(b);
+
+        assertEquals(c.getBanco(), b);
+    }
+
+    @Test
+    public void testeCarroPorta() {
+        c.setPorta(p1);
+
+        assertEquals(c.getPorta(), p1);
+    }
+
+    @Test
+    public void testeCarroTransmissao() {
+        c.setTransmissao(t);
+
+        assertEquals(c.getTransmissao(), t);
+    }
+
+    @Test
+    public void testeCarroFarol() {
+        c.setFarol(f);
+
+        assertEquals(c.getFarol(), f);
+    }
+
+    @Test
+    public void testeCarroTanqueCombustivel() {
+        c.setTanqueCombustivel(tC);
+
+        assertEquals(c.getTanqueCombustivel(), tC);
+    }
+
+    @Test
+    public void testeCarroSistemaEletrico() {
+        c.setSistemaEletrico(sE);
+
+        assertEquals(c.getSistemaEletrico(), sE);
+    }
+
+    @Test
+    public void testeCarroPainel() {
+        c.setPainel(p);
+
+        assertEquals(c.getPainel(), p);
+    }
+
+    @Test
+    public void testeCarroLigar() {
+        c.setMotor(m);
+        c.ligar();
+
+        assertTrue(c.isLigado());
     }
     
 }
