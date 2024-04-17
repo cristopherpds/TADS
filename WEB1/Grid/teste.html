@@ -11,96 +11,53 @@
         <title>Grid</title>
     </head>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
+        div{
+            border: 1px solid;
         }
-
-        .container {
+        
+        .container{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: auto auto;
-            /* Adicione uma linha extra */
-            grid-template-areas:
-                "primeira-fila primeira-fila primeira-fila primeira-fila sexta-fila"
-                "segunda-fila segunda-fila segunda-fila segunda-fila segunda-fila"
-                /* Faça sexta-fila ocupar a segunda linha */
-                "tercera-fila tercera-fila tercera-fila tercera-fila tercera-fila"
-                "quarta-fila quarta-fila quarta-fila quarta-fila quarta-fila"
-                "quinta-fila quinta-fila quinta-fila quinta-fila quinta-fila";
+            grid-template-columns: 3fr 1fr;
         }
-
-        .primeira-fila {
-            grid-area: primeira-fila;
-            background-color: #000;
-            color: #fff;
-            height: 98px;
-            justify-content: center;
-            align-items: center;
+        .fila1{
+            grid-row-start:1;
+            grid-row-end: 3;
+            background-color: red;
         }
-
-        .segunda-fila {
-            grid-area: segunda-fila;
-            background-color: #c4c4;
-            color: #fff;
-            height: 98px;
-            justify-content: center;
-            align-items: center;
+        .fila2{
+            background-color: blue;
         }
-
-        .tercera-fila {
-            grid-area: tercera-fila;
-            background-color: #000;
-            color: #fff;
-            height: 98px;
+        .fila4{
+            grid-column-start:1;
+            grid-column-end: 3;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            background-color: blueviolet;
         }
-
-        .quarta-fila {
-            grid-area: quarta-fila;
-            background-color: #c4c4;
-            color: #fff;
-            height: 98px;
-        }
-
-        .quarta-fila {
-            grid-area: quarta-fila;
-            background-color: #000;
-            color: #fff;
-            height: 98px;
-        }
-
-        .sexta-fila {
-            grid-area: sexta-fila;
-            background-color: rgba(235, 4, 235, 0.267);
-            grid-row: span 2;
-            color: #fff;
-            display: none;
-            height: 98px;
+        .fila6{
+            grid-row-start: 4;
+            grid-row-end: 6;
+            grid-column-start: 2;
+            grid-column-end: 4;
         }
     </style>
 
     <body>
         <div class="container">
-            <div class="primeira-fila">
-                <div class=""></div>
+            <div class="fila1">vermelha</div>
+            <div class="fila2">azul</div>
+            <div class="fila3">rosa</div>
+            <div class="fila4">
+                <div class="item1">1</div>
+                <div class="item2">2</div>
+                <div class="item3">3</div>
+                <div class="item4">4</div>
+                <div class="item5">5</div>
             </div>
-            <div class="segunda-fila">Altura 98px gap entre columnas: 2px</div>
-            <div class="tercera-fila">
-                <div class=""></div>
-            </div>
-            <div class="quarta-fila">
-                <div class=""></div>
-            </div>
-            <div class="quinta-fila">
-                <div class=""></div>
-            </div>
-            <div class="sexta-fila">
-                <div class=""></div>
-            </div>
+            <div class="fila5">vermelha</div>
+            <div class="fila6">azul</div>
+            <div class="fila7">vermelha</div>
+            <div class="fila8">verde</div>
         </div>
     </body>
 
