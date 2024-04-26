@@ -1,0 +1,79 @@
+{
+  "id": "59fade23-849c-43fa-be62-4f7fc6ce56c0",
+  "version": "2.0",
+  "name": "testes",
+  "url": "https://seubarriga.wcaquino.me/",
+  "tests": [{
+    "id": "4d167473-3b55-47e6-9bde-83676ff6df0c",
+    "name": "CT001: Acesso ao Site",
+    "commands": [{
+      "id": "6f003d32-b06c-45d6-aaa6-b56267451607",
+      "comment": "",
+      "command": "open",
+      "target": "https://seubarriga.wcaquino.me/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a1843659-e8d0-4cc4-a390-f1a4f5114abc",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [],
+      "value": "josuepaiva7@gmail.com"
+    }, {
+      "id": "01157514-60cf-403f-b558-49fe5030d318",
+      "comment": "",
+      "command": "type",
+      "target": "id=senha",
+      "targets": [],
+      "value": "teste123"
+    }, {
+      "id": "ffb2997f-5998-4078-9301-196d74f3e9b7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "563181a3-ca83-440e-8b24-82b8713ccc44",
+    "name": "CT002: Encerrar Site",
+    "commands": [{
+      "id": "0aec9cbb-7dff-45d7-84a7-f4010527b9ef",
+      "comment": "",
+      "command": "open",
+      "target": "https://seubarriga.wcaquino.me/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1f88773f-2136-4296-8839-a9075c358446",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1140x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad814a32-60be-4c5b-b9ac-33e98aba641e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Sair",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d8e8b49e-092a-4213-9511-e828a8c85a11",
+    "name": "Acesso ao Site",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4d167473-3b55-47e6-9bde-83676ff6df0c", "563181a3-ca83-440e-8b24-82b8713ccc44"]
+  }],
+  "urls": ["https://seubarriga.wcaquino.me/"],
+  "plugins": []
+}
