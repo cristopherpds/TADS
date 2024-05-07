@@ -1,91 +1,84 @@
 package com.mycompany.carro;
 
-import java.util.Date;
-import java.util.Scanner;
 
 public class Painel{
     Carro carro = new Carro(null, null, 0, 0, 0, null, null);
-    Banco banco = new Banco(0, null, null, null, null, null);
+    Banco banco = new Banco(false, false, false, false, false, false);
     Farol farol = new Farol(null);
-    Motor motor = new Motor(null, 0, 0, null);
     Pneu pneu = new Pneu(0, 0, null, null);
     Porta porta = new Porta(null, 0, null);
-    SistemaEletrico sistemaEletrico = new SistemaEletrico(null, null);
+    SistemaEletrico sistemaEletrico = new SistemaEletrico(null, null, null, null);
     TanqueCombustivel tanqueCombustivel = new TanqueCombustivel(0, null, 0);
+    Motor motor = new Motor(null, 0, 0, null, sistemaEletrico, tanqueCombustivel);
     Transmissao transmissao = new Transmissao(null, 0, null);
 
-    
-    public void teste(){
-        carro.setMarca("Tesla");
-        carro.setModelo("Model S Plaid");
-        carro.setAno(2024);
-        carro.setVelocidadeMax(322);
-        carro.setPotencia(1020);
-        carro.setCor("Preto");
-        carro.setZeroACem(4.1);
-        carro.Acelerar();
-
-        banco.setInclinacao(8);
-        banco.setAquecimento(true);
-        banco.setVentilacao(true);
-        banco.setMassageador(true);
-        banco.setAjusteLombar(true);
-        banco.setAjusteAltura(true);
-        banco.ajustarAltura();
-        
-        farol.setLigado(true);
-
-
-        motor.setTipoConbustive("Eletrico");
-        motor.setPotencia(1020);
-        motor.setCilindrada(4);
-        motor.setMarca("Tesla");
-
-        pneu.setLargura(9);
-        pneu.setMarca("Pirelli");
-        pneu.setPerfil("Baixo");
-        pneu.setTamanho(19);
-
-
-        porta.setFechada(true);
-        porta.setNumeroPortas(4);
-        porta.setVidroFechado(true);
-
-        sistemaEletrico.setBateriaCarregada(true);
-        sistemaEletrico.setFusivels(true);
-        sistemaEletrico.ligar();
-        sistemaEletrico.ligarFusivels();
-
-        tanqueCombustivel.setCapacidade(100);
-        tanqueCombustivel.setTipoCombustivel("Eletrico");
-        tanqueCombustivel.setNivelCombustivel(50);
-        tanqueCombustivel.abastecerCarregar();
-
-        transmissao.setAutomatica(true);
-        transmissao.setMarcha(1);
-        transmissao.setTipo("Automático");
-
-
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Deseja ligar o carro: ");
-        String ligarCarro = scanner.nextLine();
-        if(ligarCarro.equalsIgnoreCase("sim")){
-            porta.fechar();
-            banco.ajustarAltura();
-            banco.ajustarLombar();
-            banco.aquecer();
-            motor.ligar();
-            farol.ligar();
-            transmissao.trocarMarcha();
-            pneu.rodar();
-            pneu.acelerar();
-            transmissao.trocarMarcha();
-            System.out.println("Carro ligado");
-        }else{
-            motor.desligar();
-        }
-        
+    public void configurarCarro(String marca, String modelo, int ano, int velocidadeMax, int potencia, String cor, double zeroACem){
+        carro.setMarca(marca);
+        carro.setModelo(modelo);
+        carro.setAno(ano);
+        carro.setVelocidadeMax(velocidadeMax);
+        carro.setPotencia(potencia);
+        carro.setCor(cor);
+        carro.setZeroACem(zeroACem);
     }
 
+    public void configurarBanco(int inclinacao, boolean aquecimento, boolean ventilacao, boolean massageador, boolean ajusteLombar, boolean ajusteAltura){
+        banco.setInclinado(true);
+        banco.setAquecido(aquecimento);
+        banco.setVentilado(ventilacao);
+        banco.setMassagemAtiva(massageador);
+    }
+
+    public void ligarFarol(boolean ligado){
+        farol.setLigado(ligado);
+    }
+
+    public void configurarMotor(String tipoCombustivel, int potencia, int cilindradas){
+        motor.setTipoConbustive(tipoCombustivel);
+        motor.setPotencia(potencia);
+        motor.setCilindrada(cilindradas);
+    }
+
+    public void configurarPneu(int tamanho,int largura, String perfil, String marca){
+        pneu.setTamanho(tamanho);
+        pneu.setLargura(largura);
+        pneu.setPerfil(perfil);
+        pneu.setMarca(marca);   
+    }
+
+    public void configurarPorta(Boolean fechada, int numeroPortas, Boolean vidroFechado){
+        porta.setFechada(fechada);
+        porta.setNumeroPortas(numeroPortas);
+        porta.setVidroFechado(vidroFechado);
+    }
+
+    public void configurarSistemaEletrico(String tipoBateria, String tipoCarga){
+        sistemaEletrico.setTipoBateria(tipoBateria);
+        sistemaEletrico.setTipoCarga(tipoCarga);
+    }
+
+    public void configurarTanqueCombustivel(int capacidade, String tipoCombustivel, int nivelAtual){
+        tanqueCombustivel.setCapacidade(capacidade);
+        tanqueCombustivel.setTipoCombustivel(tipoCombustivel);
+        tanqueCombustivel.setNivelCombustivel(nivelAtual);
+    }
+
+    public void configurarTransmissao(String tipo, int numeroMarchas, String tipoEmbreagem){
+        transmissao.setTipo(tipo);
+        transmissao.setMarcha(numeroMarchas);
+        transmissao.setTipo(tipoEmbreagem);
+    }
+    public void exibirInformacoes() {
+        System.out.println("Carro: " + carro.getMarca() + " " + carro.getModelo() + ", " + carro.getAno());
+        System.out.println("Cor: " + carro.getCor());
+        System.out.println("Motor: " + motor.getMarca() + ", " + motor.getPotencia() + " HP");
+        System.out.println("Pneus: " + pneu.getMarca() + ", " + pneu.getPerfil());
+        System.out.println("Sistema Elétrico: Bateria " + sistemaEletrico.getTipoBateria() + ", Carga " + sistemaEletrico.getTipoCarga());
+        System.out.println("Tanque de Combustível: " + tanqueCombustivel.getTipoCombustivel() + ", Capacidade " + tanqueCombustivel.getCapacidade());
+        System.out.println("Transmissão: " + transmissao.getTipo() + ", " + transmissao.getMarcha() + " marchas");
+    }
+    
+    public void teste(){
+        exibirInformacoes();
+    }
 }

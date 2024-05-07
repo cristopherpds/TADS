@@ -15,9 +15,21 @@ public class Farol {
         this.ligado = ligado;
     }
 
-
     public void ligar(){
-        System.out.println("Farol ligado...");
+        if (!ligado) {
+            System.out.println("Farol ligado...");
+            this.ligado = true;
+        } else {
+            System.out.println("O farol já está ligado.");
+        }
     }
-    
+
+    public void desligar(){
+        if (ligado) {
+            System.out.println("Farol desligado...");
+            this.ligado = false;
+        } else {
+            System.out.println("O farol já está desligado.");
+        }
+    }
 }

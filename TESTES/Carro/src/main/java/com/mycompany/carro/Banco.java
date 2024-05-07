@@ -1,80 +1,122 @@
 package com.mycompany.carro;
 
 public class Banco {
-    private int inclinacao;
-    private Boolean aquecimento;
-    private Boolean ventilacao;
-    private Boolean massageador;
-    private Boolean ajusteLombar;
-    private Boolean ajusteAltura;
-    public Banco(int inclinacao, Boolean aquecimento, Boolean ventilacao, Boolean massageador, Boolean ajusteLombar,
-            Boolean ajusteAltura) {
-        this.inclinacao = inclinacao;
-        this.aquecimento = aquecimento;
-        this.ventilacao = ventilacao;
-        this.massageador = massageador;
-        this.ajusteLombar = ajusteLombar;
-        this.ajusteAltura = ajusteAltura;
-    }
-    public int getInclinacao() {
-        return inclinacao;
-    }
-    public void setInclinacao(int inclinacao) {
-        this.inclinacao = inclinacao;
-    }
-    public Boolean getAquecimento() {
-        return aquecimento;
-    }
-    public void setAquecimento(Boolean aquecimento) {
-        this.aquecimento = aquecimento;
-    }
-    public Boolean getVentilacao() {
-        return ventilacao;
-    }
-    public void setVentilacao(Boolean ventilacao) {
-        this.ventilacao = ventilacao;
-    }
-    public Boolean getMassageador() {
-        return massageador;
-    }
-    public void setMassageador(Boolean massageador) {
-        this.massageador = massageador;
-    }
-    public Boolean getAjusteLombar() {
-        return ajusteLombar;
-    }
-    public void setAjusteLombar(Boolean ajusteLombar) {
-        this.ajusteLombar = ajusteLombar;
-    }
-    public Boolean getAjusteAltura() {
-        return ajusteAltura;
-    }
-    public void setAjusteAltura(Boolean ajusteAltura) {
-        this.ajusteAltura = ajusteAltura;
+    private boolean inclinado = false;
+    private boolean aquecido = false;
+    private boolean ventilado = false;
+    private boolean massagemAtiva = false;
+    private boolean lombarAjustada = false;
+    private boolean alturaAjustada = false;
+
+    public Banco(boolean inclinado, boolean aquecido, boolean ventilado, boolean massagemAtiva, boolean lombarAjustada,
+            boolean alturaAjustada) {
+        this.inclinado = inclinado;
+        this.aquecido = aquecido;
+        this.ventilado = ventilado;
+        this.massagemAtiva = massagemAtiva;
+        this.lombarAjustada = lombarAjustada;
+        this.alturaAjustada = alturaAjustada;
     }
 
-
-    public void inclinar(){
-        System.out.println("Banco inclinando nivel 5...");
+    public boolean isInclinado() {
+        return inclinado;
     }
 
-    public void aquecer(){
-        System.out.println("Banco aquecendo...");
+    public void setInclinado(boolean inclinado) {
+        this.inclinado = inclinado;
     }
 
-    public void ventilar(){
-        System.out.println("Banco ventilando...");
+    public boolean isAquecido() {
+        return aquecido;
     }
 
-    public void massagem(){
-        System.out.println("Banco massagindo...");
+    public void setAquecido(boolean aquecido) {
+        this.aquecido = aquecido;
     }
 
-    public void ajustarLombar(){
-        System.out.println("Banco ajustando lombar...");
+    public boolean isVentilado() {
+        return ventilado;
     }
-    
-    public void ajustarAltura(){
-        System.out.println("Banco ajustando altura...");
+
+    public void setVentilado(boolean ventilado) {
+        this.ventilado = ventilado;
+    }
+
+    public boolean isMassagemAtiva() {
+        return massagemAtiva;
+    }
+
+    public void setMassagemAtiva(boolean massagemAtiva) {
+        this.massagemAtiva = massagemAtiva;
+    }
+
+    public boolean isLombarAjustada() {
+        return lombarAjustada;
+    }
+
+    public void setLombarAjustada(boolean lombarAjustada) {
+        this.lombarAjustada = lombarAjustada;
+    }
+
+    public boolean isAlturaAjustada() {
+        return alturaAjustada;
+    }
+
+    public void setAlturaAjustada(boolean alturaAjustada) {
+        this.alturaAjustada = alturaAjustada;
+    }
+
+    public void inclinar() {
+        if (!inclinado) {
+            System.out.println("Banco inclinando nivel 5...");
+            inclinado = true;
+        } else {
+            System.out.println("Banco já está inclinado.");
+        }
+    }
+
+    public void aquecer() {
+        if (!aquecido) {
+            System.out.println("Banco aquecendo...");
+            aquecido = true;
+        } else {
+            System.out.println("Banco já está aquecido.");
+        }
+    }
+
+    public void ventilar() {
+        if (!ventilado) {
+            System.out.println("Banco ventilando...");
+            ventilado = true;
+        } else {
+            System.out.println("Banco já está ventilado.");
+        }
+    }
+
+    public void massagem() {
+        if (!massagemAtiva) {
+            System.out.println("Banco massagindo...");
+            massagemAtiva = true;
+        } else {
+            System.out.println("Massagem já está ativa.");
+        }
+    }
+
+    public void ajustarLombar() {
+        if (!lombarAjustada) {
+            System.out.println("Banco ajustando lombar...");
+            lombarAjustada = true;
+        } else {
+            System.out.println("Lombar já está ajustada.");
+        }
+    }
+
+    public void ajustarAltura() {
+        if (!alturaAjustada) {
+            System.out.println("Banco ajustando altura...");
+            alturaAjustada = true;
+        } else {
+            System.out.println("Altura já está ajustada.");
+        }
     }
 }

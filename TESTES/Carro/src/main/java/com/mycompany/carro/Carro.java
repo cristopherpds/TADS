@@ -4,7 +4,6 @@
 
 package com.mycompany.carro;
 
-
 /**
  *
  * @author IFSul
@@ -17,6 +16,7 @@ public class Carro {
     private int potencia;
     private String cor;
     private Double zeroACem;
+
     private Pneu pneu;
     private Motor motor;
     private Banco banco;
@@ -26,10 +26,6 @@ public class Carro {
     private SistemaEletrico sistemaEletrico;
     private TanqueCombustivel tanqueCombustivel;
 
-    public void teste(){
-        System.out.println("teste");
-    }
-
     public Carro(String modelo, String marca, int ano, int velocidadeMax, int potencia, String cor, Double zeroACem) {
         this.modelo = modelo;
         this.marca = marca;
@@ -38,29 +34,6 @@ public class Carro {
         this.potencia = potencia;
         this.cor = cor;
         this.zeroACem = zeroACem;
-    }
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-
-    public Double getZeroACem() {
-        return zeroACem;
-    }
-
-    public void setZeroACem(Double zeroACem) {
-        this.zeroACem = zeroACem;
-    }
-
-    public void Acelerar() {
-        System.out.println("Acelerando...");
-    }
-
-    public void Frear() {
-        System.out.println("Freando...");
     }
 
     public String getModelo() {
@@ -103,80 +76,122 @@ public class Carro {
         this.potencia = potencia;
     }
 
-    public void setPneu(Pneu p) {
-        this.pneu = p;
+    public String getCor() {
+        return cor;
     }
 
-    public Object getPneu() {
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public Double getZeroACem() {
+        return zeroACem;
+    }
+
+    public void setZeroACem(Double zeroACem) {
+        this.zeroACem = zeroACem;
+    }
+
+    public Pneu getPneu() {
         return pneu;
     }
 
-    public void setBanco(Banco b) {
-        this.banco = b;
+    public void setPneu(Pneu pneu) {
+        this.pneu = pneu;
     }
 
-    public Object getBanco() {
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public Banco getBanco() {
         return banco;
     }
 
-    public void setPorta(Porta p1) {
-        this.porta = p1;
+    public void setBanco(Banco banco) {
+        this.banco = banco;
     }
 
-    public Object getPorta() {
-        return porta;
-    }
-
-    public void setTransmissao(Transmissao t) {
-        this.transmissao = t;
-    }
-
-    public Object getTransmissao() {
-        return transmissao;
-    }
-
-    public void setFarol(Farol f) {
-        this.farol = f;
-    }
-
-    public Object getFarol() {
+    public Farol getFarol() {
         return farol;
     }
 
-    public void setTanqueCombustivel(TanqueCombustivel tC) {
-        this.tanqueCombustivel = tC;
+    public void setFarol(Farol farol) {
+        this.farol = farol;
     }
 
-    public Object getTanqueCombustivel() {
-        return tanqueCombustivel;
+    public Transmissao getTransmissao() {
+        return transmissao;
     }
 
-    public void setSistemaEletrico(SistemaEletrico sE) {
-        this.sistemaEletrico = sE;
+    public void setTransmissao(Transmissao transmissao) {
+        this.transmissao = transmissao;
     }
 
-    public Object getSistemaEletrico() {
+    public Porta getPorta() {
+        return porta;
+    }
+
+    public void setPorta(Porta porta) {
+        this.porta = porta;
+    }
+
+    public SistemaEletrico getSistemaEletrico() {
         return sistemaEletrico;
     }
 
-    public void setPainel(Pneu p) {
-        this.pneu = p;
+    public void setSistemaEletrico(SistemaEletrico sistemaEletrico) {
+        this.sistemaEletrico = sistemaEletrico;
     }
 
-    public Object getPainel() {
-        return pneu;
+    public TanqueCombustivel getTanqueCombustivel() {
+        return tanqueCombustivel;
     }
 
-    public void setMotor(Motor m) {
-        this.motor = m;
+    public void setTanqueCombustivel(TanqueCombustivel tanqueCombustivel) {
+        this.tanqueCombustivel = tanqueCombustivel;
     }
 
-    public void ligar() {
-        System.out.println("Ligando...");
+    public void ligarCarro() {
+        if (this.sistemaEletrico.getBateriaCarregada() == false) {
+            this.sistemaEletrico.setBateriaCarregada(true);
+            System.out.println("O carro foi ligado.");
+        } else {
+            System.out.println("O carro já está ligado.");
+        }
     }
-
-    public boolean isLigado() {
-        return true;
+    
+    public void desligarCarro() {
+        if (this.sistemaEletrico.getBateriaCarregada() == true) {
+            this.sistemaEletrico.setBateriaCarregada(false);
+            System.out.println("O carro foi desligado.");
+        } else {
+            System.out.println("O carro já está desligado.");
+        }
     }
-
+    
+    public void abrirPorta() {
+        if (this.porta.getFechada() == false) {
+            this.porta.setFechada(true);
+            System.out.println("A porta foi aberta.");
+        } else {
+            System.out.println("A porta já está aberta.");
+        }
+    }
+    
+    public void abastecerCarro(int quantidade) {
+        int capacidade = this.tanqueCombustivel.getCapacidade();
+        int combustivelAtual = this.tanqueCombustivel.getNivelCombustivel();
+    
+        if (combustivelAtual + quantidade <= capacidade) {
+            this.tanqueCombustivel.setCapacidade(combustivelAtual + quantidade);
+            System.out.println("O carro foi abastecido com " + quantidade + " litros de combustível.");
+        } else {
+            System.out.println("O tanque de combustível não tem capacidade suficiente.");
+        }
+    }
 }

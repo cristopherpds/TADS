@@ -11,46 +11,46 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
+import java.time.Duration;
+
+
 /**
  *
  * @author IFSul
  */
 public class CarroTest {
-    private Carro c;
-    private Pneu p;
-    private Banco b;
-    private Porta p1;
-    private Motor m;
+    private Carro carro;
+    private Pneu pneu;
+    private Banco banco;
+    private Porta porta;
     private Transmissao t;
-    private Farol f;
+    private Farol farol;
     private SistemaEletrico sE;
     private TanqueCombustivel tC;
+    private Motor motor;
 
-    public CarroTest() {
-    }
-    
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        c = new Carro("tesla", "tesla", 2021, 230, 200, "red", 4.1);
-        p = new Pneu(1, 2, "baixo", "pireli");
-        b = new Banco(0, true, true, false, true, true);
-        p1 = new Porta(true, 2, true);
-        m = new Motor("eletrico", 1200, 4, "tesla");
-        t = new Transmissao("automatica", 0,true);
-        f = new Farol(true);
-        sE = new SistemaEletrico(true, true);
-        tC = new TanqueCombustivel(100, "Hydrogeno", 50);
-        
+        carro = new Carro("Tesla", "Model S Plaid", 2022, 396, 1020, "Preto", 2.1);
+        banco = new Banco(true, true, true, true, true, true);
+        farol = new Farol(true);
+        pneu = new Pneu(265, 35, "Radial", "Michelin");
+        porta = new Porta(true, 4, false);
+        sE = new SistemaEletrico(true, true, "Lítio", "Supercharger");
+        tC = new TanqueCombustivel(0, "Elétrico", 100);
+        motor = new Motor("Elétrico", 1020, 0, "Tesla", sE, tC);
+        t = new Transmissao("Automática", 1, true);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -60,66 +60,58 @@ public class CarroTest {
      */
 
     @Test
-    public void testeCarroPneu(){
-        c.setPneu(p);
-        assertEquals(c.getPneu(), p);
+    public void testCarroMarca() {
+        assertEquals("Tesla", carro.getMarca());
     }
 
     @Test
-    public void testeCarroBanco() {
-        c.setBanco(b);
-
-        assertEquals(c.getBanco(), b);
+    public void testCarroModelo() {
+        assertNotEquals("Model X", carro.getModelo());
     }
 
     @Test
-    public void testeCarroPorta() {
-        c.setPorta(p1);
-
-        assertEquals(c.getPorta(), p1);
+    public void testFarolStatus() {
+        assertTrue(farol.getLigado());
     }
 
     @Test
-    public void testeCarroTransmissao() {
-        c.setTransmissao(t);
-
-        assertEquals(c.getTransmissao(), t);
+    public void testPortaStatus() {
+        assertFalse(porta.getFechada());
     }
 
     @Test
-    public void testeCarroFarol() {
-        c.setFarol(f);
-
-        assertEquals(c.getFarol(), f);
+    public void testPneuMarca() {
+        assertNotNull(pneu.getMarca());
     }
 
     @Test
-    public void testeCarroTanqueCombustivel() {
-        c.setTanqueCombustivel(tC);
-
-        assertEquals(c.getTanqueCombustivel(), tC);
+    public void testBancoAquecimento() {
+        assertNull(banco.isAquecido());
     }
 
     @Test
-    public void testeCarroSistemaEletrico() {
-        c.setSistemaEletrico(sE);
-
-        assertEquals(c.getSistemaEletrico(), sE);
+    public void testSEBateria() {
+        assertSame("Lítio", sE.getTipoBateria());
     }
 
     @Test
-    public void testeCarroPainel() {
-        c.setPainel(p);
-
-        assertEquals(c.getPainel(), p);
+    public void testTCCombustivel() {
+        assertNotSame("Gasolina", tC.getTipoCombustivel());
     }
 
     @Test
-    public void testeCarroLigar() {
-        c.setMotor(m);
-        c.ligar();
-
-        assertTrue(c.isLigado());
+    public void testMotorPotencia() {
+        assertArrayEquals(new int[] { 1020 }, new int[] { motor.getPotencia() });
     }
-    
+
+    @Test
+    public void testTransmissaoMarcha() {
+        assertThrows(IllegalArgumentException.class, () -> t.setMarcha(6));
+    }
+
+    /* @Test
+    public void testAbastecerCarro() {
+        assertTimeout(Duration.ofSeconds(5), () -> carro.abastecerCarro(50));
+    } */
+
 }
