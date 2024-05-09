@@ -34,6 +34,8 @@ public class Carro {
         this.potencia = potencia;
         this.cor = cor;
         this.zeroACem = zeroACem;
+
+        this.sistemaEletrico = new SistemaEletrico(null, null, cor, cor);
     }
 
     public String getModelo() {
@@ -148,6 +150,10 @@ public class Carro {
         this.sistemaEletrico = sistemaEletrico;
     }
 
+    public void setSistemaEletrico(Boolean bateriaCarregada, Boolean fusivels, String tipoBateria, String tipoCarga) {
+        this.sistemaEletrico = new SistemaEletrico(bateriaCarregada, fusivels, tipoBateria, tipoCarga);
+    }
+
     public TanqueCombustivel getTanqueCombustivel() {
         return tanqueCombustivel;
     }
@@ -155,6 +161,8 @@ public class Carro {
     public void setTanqueCombustivel(TanqueCombustivel tanqueCombustivel) {
         this.tanqueCombustivel = tanqueCombustivel;
     }
+
+
 
     public void ligarCarro() {
         if (this.sistemaEletrico.getBateriaCarregada() == false) {
@@ -194,4 +202,21 @@ public class Carro {
             System.out.println("O tanque de combustível não tem capacidade suficiente.");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Carro [modelo=" + modelo + ", marca=" + marca + ", ano=" + ano + ", velocidadeMax=" + velocidadeMax
+                + ", potencia=" + potencia + ", cor=" + cor + ", zeroACem=" + zeroACem + ", pneu=" + pneu + ", motor="
+                + motor + ", banco=" + banco + ", farol=" + farol + ", transmissao=" + transmissao + ", porta=" + porta
+                + ", sistemaEletrico=" + sistemaEletrico + ", tanqueCombustivel=" + tanqueCombustivel + ", getModelo()="
+                + getModelo() + ", getMarca()=" + getMarca() + ", getAno()=" + getAno() + ", getClass()=" + getClass()
+                + ", getVelocidadeMax()=" + getVelocidadeMax() + ", getPotencia()=" + getPotencia() + ", getCor()="
+                + getCor() + ", getZeroACem()=" + getZeroACem() + ", getPneu()=" + getPneu() + ", getMotor()="
+                + getMotor() + ", getBanco()=" + getBanco() + ", getFarol()=" + getFarol() + ", getTransmissao()="
+                + getTransmissao() + ", getPorta()=" + getPorta() + ", getSistemaEletrico()=" + getSistemaEletrico()
+                + ", hashCode()=" + hashCode() + ", getTanqueCombustivel()=" + getTanqueCombustivel() + ", toString()="
+                + super.toString() + "]";
+    }
+
+    
 }

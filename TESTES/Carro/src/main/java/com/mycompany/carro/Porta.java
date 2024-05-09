@@ -5,7 +5,6 @@ public class Porta {
     private int numeroPortas;
     private Boolean vidroFechado;
 
-    
 
     public Porta(Boolean fechada, int numeroPortas, Boolean vidroFechado) {
         this.fechada = fechada;
