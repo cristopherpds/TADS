@@ -1,1 +1,11 @@
+com\mycompany\carro\Banco.class
+com\mycompany\carro\Porta.class
+com\mycompany\carro\Motor.class
 com\mycompany\carro\Carro.class
+com\mycompany\carro\Painel.class
+com\mycompany\carro\SistemaEletrico.class
+com\mycompany\carro\TanqueCombustivel.class
+com\mycompany\carro\Farol.class
+com\mycompany\carro\Transmissao.class
+com\mycompany\carro\Pneu.class
+com\mycompany\carro\Main.class

@@ -197,7 +197,7 @@ public class Carro {
     
         if (combustivelAtual + quantidade <= capacidade) {
             this.tanqueCombustivel.setCapacidade(combustivelAtual + quantidade);
-            System.out.println("O carro foi abastecido com " + quantidade + " litros de combustível.");
+            System.out.println("O carro foi abastecido com " + quantidade + " x % de combustível.");
         } else {
             System.out.println("O tanque de combustível não tem capacidade suficiente.");
         }

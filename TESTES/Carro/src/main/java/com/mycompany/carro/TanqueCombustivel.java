@@ -39,10 +39,10 @@ public class TanqueCombustivel {
         if (nivelCombustivel + quantidade <= capacidade) {
             nivelCombustivel += quantidade;
             System.out.println(
-                    "Tanque abastecido com " + quantidade + " litros. Nível atual: " + nivelCombustivel + " litros.");
+                    "Tanque abastecido com " + quantidade + " %. Nível atual: " + nivelCombustivel + " %.");
         } else {
             System.out.println(
-                    "Não é possível abastecer essa quantidade. O tanque só pode conter " + capacidade + " litros.");
+                    "Não é possível abastecer essa quantidade. O tanque só pode conter " + capacidade + " % .");
         }
     }
 

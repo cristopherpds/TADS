@@ -9,9 +9,9 @@ public class Main {
         painel.ligarFarol(true);
         painel.configurarMotor("Eletrico", 1020, 0, "Tesla");
         painel.configurarPneu(235, 45, "Radial", "Michelin");
-        painel.configurarPorta(true, 4,false);
+        painel.configurarPorta(false, 4,false);
         painel.configurarSistemaEletrico(true, true,"Lítio", "Supercharger");
-        painel.configurarTanqueCombustivel(100, "Eletrico", 100);
+        painel.configurarTanqueCombustivel(100, "Eletrico", 0);
         painel.configurarTransmissao("Automatica", 1, true);
         
         painel.teste();

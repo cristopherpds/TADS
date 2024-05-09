@@ -88,6 +88,7 @@ public class Painel{
         motor.verificarSistemaEletrico();
         motor.verificarNivelCombustivel();
         carro.ligarCarro();
+        
 
         porta.abrirVidro();
         porta.fecharVidro();
@@ -98,8 +99,8 @@ public class Painel{
         sistemaEletrico.desligarFusivels();
         sistemaEletrico.estaFuncionando();
 
-        tanqueCombustivel.abastecer(0);
-        tanqueCombustivel.estaVazio();
+        //tanqueCombustivel.abastecer(10);
+        //tanqueCombustivel.estaVazio();
 
         transmissao.aumentarMarcha();
         transmissao.diminuirMarcha();
