@@ -1,7 +1,7 @@
 package com.mycompany.carro;
 
 public class Motor {
-    private String tipoConbustive;
+    private String tipoConbustivel;
     private int potencia;
     private int cilindrada;
     private String marca;
@@ -9,22 +9,22 @@ public class Motor {
     private SistemaEletrico sistemaEletrico;
     private TanqueCombustivel tanqueCombustivel;
 
-    public Motor(String tipoConbustive, int potencia, int cilindrada, String marca, SistemaEletrico sistemaEletrico,
+    public Motor(String tipoConbustivel, int potencia, int cilindrada, String marca, SistemaEletrico sistemaEletrico,
             TanqueCombustivel tanqueCombustivel) {
-        this.tipoConbustive = tipoConbustive;
+        this.tipoConbustivel = tipoConbustivel;
         this.potencia = potencia;
         this.cilindrada = cilindrada;
         this.marca = marca;
-        this.sistemaEletrico = sistemaEletrico;
+        this.sistemaEletrico = new SistemaEletrico(true, true, "Liteo", "Super charger");
         this.tanqueCombustivel = tanqueCombustivel;
     }
 
-    public String getTipoConbustive() {
-        return tipoConbustive;
+    public String getTipoConbustivel() {
+        return tipoConbustivel;
     }
 
-    public void setTipoConbustive(String tipoConbustive) {
-        this.tipoConbustive = tipoConbustive;
+    public void setTipoConbustive(String tipoConbustivel) {
+        this.tipoConbustivel = tipoConbustivel;
     }
 
     public int getPotencia() {
@@ -66,6 +66,10 @@ public class Motor {
     public void setSistemaEletrico(SistemaEletrico sistemaEletrico) {
         this.sistemaEletrico = sistemaEletrico;
     }
+    public void setSistemaEletrico(Boolean bateriaCarregada, Boolean fusivels, String tipoBateria, String tipoCarga) {
+        this.sistemaEletrico = new SistemaEletrico(bateriaCarregada, fusivels, tipoBateria, tipoCarga);
+    }
+
 
     public TanqueCombustivel getTanqueCombustivel() {
         return tanqueCombustivel;
@@ -85,7 +89,7 @@ public class Motor {
 
     public void verificarNivelCombustivel() {
         int nivel = tanqueCombustivel.getNivelCombustivel();
-        if (nivel > 0) {
+        if (nivel >= 0) {
             System.out.println("Nível de combustível: " + nivel + "%");
         } else {
             System.out.println("Tanque de combustível vazio.");

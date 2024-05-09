@@ -6,13 +6,12 @@ public class SistemaEletrico {
     private String tipoBateria;
     private String tipoCarga;
 
-    
-    public SistemaEletrico(Boolean bateriaCarregada, Boolean fusivels, String tipoBateria, String tipoCarga) {
-        this.bateriaCarregada = bateriaCarregada;
-        this.fusivels = fusivels;
-        this.tipoBateria = tipoBateria;
-        this.tipoCarga = tipoCarga;
-    }
+public SistemaEletrico(Boolean bateriaCarregada, Boolean fusivels, String tipoBateria, String tipoCarga) {
+    this.bateriaCarregada = bateriaCarregada != null ? bateriaCarregada : false;
+    this.fusivels = fusivels != null ? fusivels : false;
+    this.tipoBateria = tipoBateria;
+    this.tipoCarga = tipoCarga;
+}
 
     public String getTipoBateria() {
         return tipoBateria;
@@ -29,7 +28,6 @@ public class SistemaEletrico {
     public void setTipoCarga(String tipoCarga) {
         this.tipoCarga = tipoCarga;
     }
-
 
     public Boolean getBateriaCarregada() {
         return bateriaCarregada;

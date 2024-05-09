@@ -40,15 +40,17 @@ public class CarroTest {
 
     @Before
     public void setUp() {
-        carro = new Carro("Tesla", "Model S Plaid", 2022, 396, 1020, "Preto", 2.1);
+        //inicialize este metodo da mesma forma que esta na clase main
+        carro = new Carro("Tesla", "Model S Plaid", 2024, 322, 1020, "Preto", 4.1);
+        pneu = new Pneu(235, 45, "Radial", "Michelin");
         banco = new Banco(true, true, true, true, true, true);
-        farol = new Farol(true);
-        pneu = new Pneu(265, 35, "Radial", "Michelin");
         porta = new Porta(true, 4, false);
+        t = new Transmissao("Automatica", 1, true);
+        farol = new Farol(true);
         sE = new SistemaEletrico(true, true, "Lítio", "Supercharger");
         tC = new TanqueCombustivel(0, "Elétrico", 100);
-        motor = new Motor("Elétrico", 1020, 0, "Tesla", sE, tC);
-        t = new Transmissao("Automática", 1, true);
+        motor = new Motor("Eletrico", 1020, 0, "Tesla", sE, tC);
+
     }
 
     @After
@@ -109,9 +111,11 @@ public class CarroTest {
         assertThrows(IllegalArgumentException.class, () -> t.setMarcha(6));
     }
 
-    /* @Test
+    @Test
     public void testAbastecerCarro() {
-        assertTimeout(Duration.ofSeconds(5), () -> carro.abastecerCarro(50));
-    } */
+        assertTimeoutPreemptively(Duration.ofSeconds(5), () -> {
+            carro.abastecerCarro(50);
+        });
+    }
 
 }
