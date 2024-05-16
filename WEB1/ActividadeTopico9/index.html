@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <header class="bg-[#0072c6] text-white py-4 px-6 flex items-center justify-between">
+  <div class="flex items-center space-x-4">
+    <a class="group" href="#">
+      <img
+        alt="IFSul Logo"
+        class="transition-transform duration-300 group-hover:scale-110"
+        height="50"
+        src="/placeholder.svg"
+        style="aspect-ratio: 150/50; object-fit: cover;"
+        width="150"
+      />
+    </a>
+    <a class="group" href="#">
+      <img
+        alt="UTU Logo"
+        class="transition-transform duration-300 group-hover:scale-110"
+        height="50"
+        src="/placeholder.svg"
+        style="aspect-ratio: 100/50; object-fit: cover;"
+        width="100"
+      />
+    </a>
+    <a class="group" href="#">
+      <img
+        alt="UTEC Logo"
+        class="transition-transform duration-300 group-hover:scale-110"
+        height="50"
+        src="/placeholder.svg"
+        style="aspect-ratio: 100/50; object-fit: cover;"
+        width="100"
+      />
+    </a>
+  </div>
+  <nav class="flex items-center space-x-6">
+    <a class="hover:underline" href="#">Home</a>
+    <div class="group relative">
+      <button class="hover:underline">Categorias</button>
+      <div class="absolute top-full left-0 bg-white text-gray-800 py-2 px-4 rounded-md shadow-lg hidden group-hover:block">
+        <a class="block hover:underline" href="#">Esportes</a>
+        <a class="block hover:underline" href="#">Eventos</a>
+        <a class="block hover:underline" href="#">Institucional</a>
+        <a class="block hover:underline" href="#">Premiações</a>
+        <a class="block hover:underline" href="#">Envie uma notícia</a>
+      </div>
+    </div>
+    <a class="hover:underline" href="#">Sobre</a>
+    <a class="hover:underline" href="#">Contato</a>
+  </nav>
+</header>
+<main class="bg-gray-100 py-8 px-6">
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <img
+        alt="News 1"
+        class="w-full h-32 object-cover"
+        height="200"
+        src="/placeholder.svg"
+        style="aspect-ratio: 400/200; object-fit: cover;"
+        width="400"
+      />
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Notícia 1</h3>
+        <p class="text-gray-600 mb-2">Conheça os principais acontecimentos da semana no IFSul.</p>
+        <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+      </div>
+    </div>
+    <!-- Repeat news items as needed -->
+  </section>
+</main>
+<footer class="bg-[#0072c6] text-white py-8 px-6">
+  <div class="container mx-auto flex justify-between items-center">
+    <div>
+      <img
+        alt="IFSul Logo"
+        height="50"
+        src="/placeholder.svg"
+        style="aspect-ratio: 150/50; object-fit: cover;"
+        width="150"
+      />
+      <p class="mt-4">Instituto Federal de Educação, Ciência e Tecnologia Sul-rio-grandense</p>
+    </div>
+    <nav class="flex space-x-6">
+      <a class="hover:underline" href="#">Home</a>
+      <a class="hover:underline" href="#">Sobre</a>
+      <a class="hover:underline" href="#">Notícias</a>
+      <a class="hover:underline" href="#">Contato</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
