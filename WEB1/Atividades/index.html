@@ -1,13 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topico 8 - Atividades</title>
 </head>
+
 <body>
-    <div class="container">
-        
-    </div>
+    <div class="container"></div>
+    <script>
+        var array = [
+            "Teste",
+            "Passe",
+            "Leite",
+            "Café",
+            "HTML",
+            "JAVA",
+            "JS",
+            "CSS",
+            "Casa",
+        ]
+        var container = document.querySelector(".container");
+
+        function diasProximoAniversario() {
+            container.innerHTML = "";
+            var dataProximoAniversario = prompt(
+                "Por favor, insira a data do seu próximo aniversário no formato YYYY-MM-DD:"
+            );
+
+            var proximoAniversario = new Date(dataProximoAniversario);
+
+            if (isNaN(proximoAniversario)) {
+                container.innerHTML +=
+                    "Data inválida. Por favor, insira a data no formato correto.";
+                return;
+            }
+
+            var hoje = new Date();
+
+            var diferenca = proximoAniversario - hoje;
+
+            var diasFaltando = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
+
+            container.innerHTML +=
+                "Faltam " + diasFaltando + " dias para o seu próximo aniversário.";
+        }
+
+
+        function calcularPotencia() {
+            container.innerHTML = "";
+            var base = prompt("Digite o número base:");
+            var expoente = prompt("Digite o expoente:");
+            var resultado = Math.pow(parseFloat(base), parseFloat(expoente));
+            container.innerHTML += "O resultado é: " + resultado;
+        }
+
+        function buscarNoArray() {
+            container.innerHTML = "";
+            var busca = prompt("Digite o item a ser pesquisado:").toLowerCase();
+
+            var arrayLowerCase = array.map((item) => {
+                return item.toLowerCase();
+            });
+
+            var indice = arrayLowerCase.indexOf(busca);
+            if (indice !== -1) {
+                container.innerHTML +=
+                    "O item " + busca + " está na posição " + indice + " do array.";
+            } else {
+                container.innerHTML +=
+                    "O item " + busca + " não foi encontrado no array.";
+            }
+        }
+
+        function inserirInicioArray() {
+            container.innerHTML = "";
+            var novoItem = prompt(
+                "Digite o novo item a ser inserido no início do array:"
+            );
+            array.unshift(novoItem);
+            container.innerHTML +=
+                "Novo item inserido no início do array: " + array;
+        }
+
+
+        function inserirFinalArray() {
+            container.innerHTML = "";
+            var novoItem = prompt(
+                "Digite o novo item a ser inserido no final do array:"
+            );
+            array.push(novoItem);
+            container.innerHTML += "Novo item inserido no final do array: " + array;
+        }
+    </script>
+
+    <button onclick="diasProximoAniversario()">
+        Calcular Dias para o Próximo Aniversário</button><br />
+    <button onclick="calcularPotencia()">Calcular Potência</button><br />
+    <button onclick="buscarNoArray()">Buscar Item no Array</button><br />
+    <button onclick="inserirInicioArray()">
+        Inserir Item no Início do Array</button><br />
+    <button onclick="inserirFinalArray()">Inserir Item no Final do Array</button><br />
 </body>
+
 </html>
