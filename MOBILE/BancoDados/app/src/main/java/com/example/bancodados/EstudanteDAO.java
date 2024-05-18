@@ -19,10 +19,12 @@ public class EstudanteDAO {
         long id = -1;
         SQLiteDatabase dbConexion = db.getWritableDatabase();
         try{
-            ContentValues values = new ContentValues();
-            values.put("nome", estudante.getNome());
-            values.put("cpf", estudante.getCpf());
-            id = dbConexion.insert("estudante", null, values);
+            if(!(estudante.getNome().isEmpty() &&  estudante.getCpf().isEmpty())){
+                ContentValues values = new ContentValues();
+                values.put("nome", estudante.getNome());
+                values.put("cpf", estudante.getCpf());
+                id = dbConexion.insert("estudante", null, values);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -31,6 +33,7 @@ public class EstudanteDAO {
         }
         return id;
     }
+
 
     @SuppressLint("Range")
     public List<Estudante> listarTodos(){

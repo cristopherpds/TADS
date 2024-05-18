@@ -13,10 +13,11 @@ public class Database extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table if not exists estudante(" +
-                "id interger primary key autoincrement," +
+                "id integer primary key autoincrement," +
                 "nome text, cpf text);");
     }
 
