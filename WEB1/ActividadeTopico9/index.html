@@ -1,100 +1,313 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <header class="bg-[#0072c6] text-white py-4 px-6 flex items-center justify-between">
-  <div class="flex items-center space-x-4">
-    <a class="group" href="#">
-      <img
-        alt="IFSul Logo"
-        class="transition-transform duration-300 group-hover:scale-110"
-        height="50"
-        src="/placeholder.svg"
-        style="aspect-ratio: 150/50; object-fit: cover;"
-        width="150"
-      />
-    </a>
-    <a class="group" href="#">
-      <img
-        alt="UTU Logo"
-        class="transition-transform duration-300 group-hover:scale-110"
-        height="50"
-        src="/placeholder.svg"
-        style="aspect-ratio: 100/50; object-fit: cover;"
-        width="100"
-      />
-    </a>
-    <a class="group" href="#">
-      <img
-        alt="UTEC Logo"
-        class="transition-transform duration-300 group-hover:scale-110"
-        height="50"
-        src="/placeholder.svg"
-        style="aspect-ratio: 100/50; object-fit: cover;"
-        width="100"
-      />
-    </a>
-  </div>
-  <nav class="flex items-center space-x-6">
-    <a class="hover:underline" href="#">Home</a>
-    <div class="group relative">
-      <button class="hover:underline">Categorias</button>
-      <div class="absolute top-full left-0 bg-white text-gray-800 py-2 px-4 rounded-md shadow-lg hidden group-hover:block">
-        <a class="block hover:underline" href="#">Esportes</a>
-        <a class="block hover:underline" href="#">Eventos</a>
-        <a class="block hover:underline" href="#">Institucional</a>
-        <a class="block hover:underline" href="#">Premiações</a>
-        <a class="block hover:underline" href="#">Envie uma notícia</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IFNews</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/index.js" defer></script>
+  </head>
+  <body>
+    <header
+      class="bg-[#0072c6] text-white py-4 px-6 flex items-center justify-between"
+    >
+      <div class="flex items-center space-x-4">
+        <a
+          class="group"
+          href="http://www.santana.ifsul.edu.br/"
+          target="_blank"
+        >
+          <img
+            alt="IFSul Logo"
+            class="transition-transform duration-300 group-hover:scale-110"
+            height="50"
+            src="img/Santana_completa.png"
+            style="aspect-ratio: 150/50; object-fit: contain"
+            width="150"
+          />
+        </a>
+        <a class="group" href="https://www.utu.edu.uy/" target="_blank">
+          <img
+            alt="UTU Logo"
+            class="transition-transform duration-300 group-hover:scale-110"
+            height="50"
+            src="img/utu.png"
+            style="aspect-ratio: 150/50; object-fit: contain"
+            width="150"
+          />
+        </a>
+        <a class="group" href="https://utec.edu.uy/pt/" target="_blank">
+          <img
+            alt="UTEC Logo"
+            class="transition-transform duration-300 group-hover:scale-110"
+            height="50"
+            src="img/utec.png"
+            style="aspect-ratio: 150/50; object-fit: contain"
+            width="150"
+          />
+        </a>
       </div>
-    </div>
-    <a class="hover:underline" href="#">Sobre</a>
-    <a class="hover:underline" href="#">Contato</a>
-  </nav>
-</header>
-<main class="bg-gray-100 py-8 px-6">
-  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <img
-        alt="News 1"
-        class="w-full h-32 object-cover"
-        height="200"
-        src="/placeholder.svg"
-        style="aspect-ratio: 400/200; object-fit: cover;"
-        width="400"
-      />
-      <div class="p-4">
-        <h3 class="text-lg font-bold mb-2">Notícia 1</h3>
-        <p class="text-gray-600 mb-2">Conheça os principais acontecimentos da semana no IFSul.</p>
-        <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+      <nav class="flex items-center space-x-6">
+        <a class="hover:underline" href="#">Home</a>
+        <div class="group relative">
+          <button class="hover:underline">Categorias</button>
+          <div
+            class="absolute top-full left-0 bg-white text-gray-800 py-2 px-4 rounded-md shadow-lg hidden group-hover:block"
+          >
+            <a class="block hover:underline" href="#">Esportes</a>
+            <a class="block hover:underline" href="#">Eventos</a>
+            <a class="block hover:underline" href="#">Institucional</a>
+            <a class="block hover:underline" href="#">Premiações</a>
+            <a class="block hover:underline" href="#">Envie uma notícia</a>
+          </div>
+        </div>
+        <a class="hover:underline" href="#">Sobre</a>
+        <a class="hover:underline" href="#">Contato</a>
+      </nav>
+    </header>
+    <main class="bg-gray-100 py-8 px-6">
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img
+            alt="Featured News"
+            class="w-full h-64 object-cover"
+            height="400"
+            src="/placeholder.svg"
+            style="aspect-ratio: 800/400; object-fit: cover"
+            width="800"
+          />
+          <div class="p-6">
+            <h2 class="text-2xl font-bold mb-2">Destaque da Semana</h2>
+            <p class="text-gray-600 mb-4">
+              Conheça os principais acontecimentos da semana no IFSul.
+            </p>
+            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img
+              alt="News 1"
+              class="w-full h-32 object-cover"
+              height="200"
+              src="/placeholder.svg"
+              style="aspect-ratio: 400/200; object-fit: cover"
+              width="400"
+            />
+            <div class="p-4">
+              <h3 class="text-lg font-bold mb-2">Notícia 1</h3>
+              <p class="text-gray-600 mb-2">
+                Conheça os principais acontecimentos da semana no IFSul.
+              </p>
+              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img
+              alt="News 2"
+              class="w-full h-32 object-cover"
+              height="200"
+              src="/placeholder.svg"
+              style="aspect-ratio: 400/200; object-fit: cover"
+              width="400"
+            />
+            <div class="p-4">
+              <h3 class="text-lg font-bold mb-2">Notícia 2</h3>
+              <p class="text-gray-600 mb-2">
+                Conheça os principais acontecimentos da semana no IFSul.
+              </p>
+              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img
+              alt="News 3"
+              class="w-full h-32 object-cover"
+              height="200"
+              src="/placeholder.svg"
+              style="aspect-ratio: 400/200; object-fit: cover"
+              width="400"
+            />
+            <div class="p-4">
+              <h3 class="text-lg font-bold mb-2">Notícia 3</h3>
+              <p class="text-gray-600 mb-2">
+                Conheça os principais acontecimentos da semana no IFSul.
+              </p>
+              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img
+              alt="News 4"
+              class="w-full h-32 object-cover"
+              height="200"
+              src="/placeholder.svg"
+              style="aspect-ratio: 400/200; object-fit: cover"
+              width="400"
+            />
+            <div class="p-4">
+              <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
+              <p class="text-gray-600 mb-2">
+                Conheça os principais acontecimentos da semana no IFSul.
+              </p>
+              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"
+      >
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img
+            alt="News 4"
+            class="w-full h-32 object-cover"
+            height="200"
+            src="/placeholder.svg"
+            style="aspect-ratio: 400/200; object-fit: cover"
+            width="400"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
+            <p class="text-gray-600 mb-2">
+              Conheça os principais acontecimentos da semana no IFSul.
+            </p>
+            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img
+            alt="News 4"
+            class="w-full h-32 object-cover"
+            height="200"
+            src="/placeholder.svg"
+            style="aspect-ratio: 400/200; object-fit: cover"
+            width="400"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
+            <p class="text-gray-600 mb-2">
+              Conheça os principais acontecimentos da semana no IFSul.
+            </p>
+            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img
+            alt="News 4"
+            class="w-full h-32 object-cover"
+            height="200"
+            src="/placeholder.svg"
+            style="aspect-ratio: 400/200; object-fit: cover"
+            width="400"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
+            <p class="text-gray-600 mb-2">
+              Conheça os principais acontecimentos da semana no IFSul.
+            </p>
+            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+          </div>
+        </div>
+        <!-- Repeat news items as needed -->
+      </section>
+      <section class="bg-white rounded-lg shadow-md p-6 mt-8">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-bold">Próximo Processo Seletivo</h2>
+          <div class="bg-[#0072c6] text-white px-4 py-2 rounded-md">
+            <span class="font-bold">30/11/2024</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-4 pseletivo"></p>
+      </section>
+      <section class="bg-white rounded-lg shadow-md p-6 mt-8">
+        <h2 class="text-2xl font-bold mb-4">Depoimentos de Estudantes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-100 rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <img
+                alt="Student 1"
+                class="rounded-full mr-4"
+                height="48"
+                src="/placeholder.svg"
+                style="aspect-ratio: 48/48; object-fit: cover"
+                width="48"
+              />
+              <div>
+                <h3 class="text-lg font-bold">Maria Silva</h3>
+                <p class="text-gray-600">Estudante de Engenharia</p>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              "O IFSul me proporcionou uma experiência incrível. Os professores
+              são muito dedicados e o ambiente é muito acolhedor."
+            </p>
+          </div>
+          <div class="bg-gray-100 rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <img
+                alt="Student 2"
+                class="rounded-full mr-4"
+                height="48"
+                src="/placeholder.svg"
+                style="aspect-ratio: 48/48; object-fit: cover"
+                width="48"
+              />
+              <div>
+                <h3 class="text-lg font-bold">João Oliveira</h3>
+                <p class="text-gray-600">Estudante de Informática</p>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              "Estou muito satisfeito com o IFSul. As aulas são dinâmicas e os
+              laboratórios são muito bem equipados."
+            </p>
+          </div>
+          <div class="bg-gray-100 rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <img
+                alt="Student 3"
+                class="rounded-full mr-4"
+                height="48"
+                src="/placeholder.svg"
+                style="aspect-ratio: 48/48; object-fit: cover"
+                width="48"
+              />
+              <div>
+                <h3 class="text-lg font-bold">Ana Souza</h3>
+                <p class="text-gray-600">Estudante de Química</p>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              "O IFSul me proporcionou uma formação de excelência. Estou muito
+              orgulhosa de fazer parte dessa instituição."
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-[#0072c6] text-white py-8 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <div>
+          <img
+            alt="IFSul Logo"
+            height="50"
+            src="img/Santana_resumida.png"
+            style="aspect-ratio: 150/50; object-fit: contain"
+            width="150"
+          />
+          <p class="mt-4">
+            Instituto Federal de Educação, Ciência e Tecnologia
+            Sul-rio-grandense
+          </p>
+        </div>
+        <nav class="flex space-x-6">
+          <a class="hover:underline" href="#">Home</a>
+          <a class="hover:underline" href="#">Sobre</a>
+          <a class="hover:underline" href="#">Notícias</a>
+          <a class="hover:underline" href="#">Contato</a>
+        </nav>
       </div>
-    </div>
-    <!-- Repeat news items as needed -->
-  </section>
-</main>
-<footer class="bg-[#0072c6] text-white py-8 px-6">
-  <div class="container mx-auto flex justify-between items-center">
-    <div>
-      <img
-        alt="IFSul Logo"
-        height="50"
-        src="/placeholder.svg"
-        style="aspect-ratio: 150/50; object-fit: cover;"
-        width="150"
-      />
-      <p class="mt-4">Instituto Federal de Educação, Ciência e Tecnologia Sul-rio-grandense</p>
-    </div>
-    <nav class="flex space-x-6">
-      <a class="hover:underline" href="#">Home</a>
-      <a class="hover:underline" href="#">Sobre</a>
-      <a class="hover:underline" href="#">Notícias</a>
-      <a class="hover:underline" href="#">Contato</a>
-    </nav>
-  </div>
-</footer>
-
-</body>
+    </footer>
+  </body>
 </html>
