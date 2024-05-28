@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         List<Estudante> estudiantes = eDAO.listarTodos();
 
         for (Estudante estudiante : estudiantes) {
-            adapter.add("ID: " + estudiante.getId() + ", Nombre: " + estudiante.getNome() + ", CPF: " + estudiante.getCpf());
+            adapter.add("ID: " + estudiante.getId() + ", Nombre: " + estudiante.getNome() +", CPF: " + estudiante.getCpf());
         }
     }
 
