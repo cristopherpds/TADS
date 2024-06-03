@@ -4,14 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IFNews</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <script src="js/index.js" defer></script>
   </head>
+
   <body>
-    <header
-      class="bg-[#0072c6] text-white py-4 px-6 flex items-center justify-between"
-    >
-      <div class="flex items-center space-x-4">
+    <header class="header">
+      <div class="header-logos">
         <a
           class="group"
           href="http://www.santana.ifsul.edu.br/"
@@ -19,295 +26,321 @@
         >
           <img
             alt="IFSul Logo"
-            class="transition-transform duration-300 group-hover:scale-110"
+            class="logo"
             height="50"
             src="img/Santana_completa.png"
-            style="aspect-ratio: 150/50; object-fit: contain"
-            width="150"
           />
         </a>
         <a class="group" href="https://www.utu.edu.uy/" target="_blank">
-          <img
-            alt="UTU Logo"
-            class="transition-transform duration-300 group-hover:scale-110"
-            height="50"
-            src="img/utu.png"
-            style="aspect-ratio: 150/50; object-fit: contain"
-            width="150"
-          />
+          <img alt="UTU Logo" class="logo" height="50" src="img/utu.png" />
         </a>
         <a class="group" href="https://utec.edu.uy/pt/" target="_blank">
-          <img
-            alt="UTEC Logo"
-            class="transition-transform duration-300 group-hover:scale-110"
-            height="50"
-            src="img/utec.png"
-            style="aspect-ratio: 150/50; object-fit: contain"
-            width="150"
-          />
+          <img alt="UTEC Logo" class="logo" height="50" src="img/utec.png" />
         </a>
       </div>
-      <nav class="flex items-center space-x-6">
-        <a class="hover:underline" href="#">Home</a>
-        <div class="group relative">
-          <button class="hover:underline">Categorias</button>
-          <div
-            class="absolute top-full left-0 bg-white text-gray-800 py-2 px-4 rounded-md shadow-lg hidden group-hover:block"
-          >
-            <a class="block hover:underline" href="#">Esportes</a>
-            <a class="block hover:underline" href="#">Eventos</a>
-            <a class="block hover:underline" href="#">Institucional</a>
-            <a class="block hover:underline" href="#">Premiações</a>
-            <a class="block hover:underline" href="#">Envie uma notícia</a>
+      <nav class="navbar">
+        <a class="nav-link" href="index.html">Home</a>
+        <div class="dropdown">
+          <button class="dropbtn">Categorias</button>
+          <div class="dropdown-content">
+            <a href="category.html">Esportes</a>
+            <a href="category.html">Eventos</a>
+            <a href="category.html">Institucional</a>
+            <a href="category.html">Premiações</a>
+            <a href="category.html">Envie uma notícia</a>
           </div>
         </div>
-        <a class="hover:underline" href="#">Sobre</a>
-        <a class="hover:underline" href="#">Contato</a>
+        <a class="nav-link" href="#">Sobre</a>
+        <a class="nav-link" href="#">Contato</a>
       </nav>
     </header>
-    <main class="bg-gray-100 py-8 px-6">
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <main class="main-content">
+      <section class="featured-news">
+        <div class="news-item">
           <img
             alt="Featured News"
-            class="w-full h-64 object-cover"
+            class="news-image"
             height="400"
-            src="/placeholder.svg"
-            style="aspect-ratio: 800/400; object-fit: cover"
-            width="800"
+            src="/img/WhatsApp_Image_2024-04-23_at_132435.jpeg"
           />
-          <div class="p-6">
-            <h2 class="text-2xl font-bold mb-2">Destaque da Semana</h2>
-            <p class="text-gray-600 mb-4">
-              Conheça os principais acontecimentos da semana no IFSul.
+          <div class="news-content">
+            <h2 class="news-title">
+              FELIZ ANIVERSÁRIO, IFSUL - CÂMPUS SANTANA DO LIVRAMENTO!
+            </h2>
+            <p class="news-description">
+              Hoje é dia de celebrar mais um capítulo na história do nosso
+              querido IFSul - Campus Santana do Livramento! 🎉
             </p>
-            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+            <a class="read-more" href="noticia.html">Leia mais</a>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="news-grid">
+          <div class="news-item">
             <img
               alt="News 1"
-              class="w-full h-32 object-cover"
+              class="news-image"
               height="200"
-              src="/placeholder.svg"
-              style="aspect-ratio: 400/200; object-fit: cover"
-              width="400"
+              src="/img/evento.png"
             />
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2">Notícia 1</h3>
-              <p class="text-gray-600 mb-2">
-                Conheça os principais acontecimentos da semana no IFSul.
+            <div class="news-content">
+              <h3 class="news-title">
+                Formatura do curso de Atendimento e Vendas - IFSul/SME
+              </h3>
+              <p class="news-description">
+                No último dia 16 de abril, no auditório da Unipampa, foram
+                formados pelo IFSul 53 estudantes de EJA (Educação de Jovens e
+                Adultos) das escolas Municipais Célia Irulegui, Dr. Abreu...
               </p>
-              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+              <a class="read-more" href="noticia.html">Leia mais</a>
             </div>
           </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="news-item">
             <img
               alt="News 2"
-              class="w-full h-32 object-cover"
+              class="news-image"
               height="200"
-              src="/placeholder.svg"
-              style="aspect-ratio: 400/200; object-fit: cover"
-              width="400"
+              src="/img/comunicado.png"
             />
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2">Notícia 2</h3>
-              <p class="text-gray-600 mb-2">
-                Conheça os principais acontecimentos da semana no IFSul.
+            <div class="news-content">
+              <h3 class="news-title">Normas de Convivência</h3>
+              <p class="news-description">
+                IFSul - Câmpus Santana do Livramento divulga as Normas de
+                Convivência.
               </p>
-              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+              <a class="read-more" href="noticia.html">Leia mais</a>
             </div>
           </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="news-item">
             <img
               alt="News 3"
-              class="w-full h-32 object-cover"
+              class="news-image"
               height="200"
-              src="/placeholder.svg"
-              style="aspect-ratio: 400/200; object-fit: cover"
-              width="400"
+              src="/img/edital.jpg"
             />
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2">Notícia 3</h3>
-              <p class="text-gray-600 mb-2">
-                Conheça os principais acontecimentos da semana no IFSul.
+            <div class="news-content">
+              <h3 class="news-title">
+                Edital 09/2024 - Identificação de Demanda dos Auxílios da
+                Assistência Estudantil
+              </h3>
+              <p class="news-description">
+                Conheça os principais acontecimentos da semana no IFSul.IFSul -
+                Câmpus Santana do Livramento divulga o edital de identificação
+                de demandas para concessão de Auxílios da Assistência
+                Estudantil.
               </p>
-              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+              <a class="read-more" href="#">Leia mais</a>
             </div>
           </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="news-item">
             <img
               alt="News 4"
-              class="w-full h-32 object-cover"
+              class="news-image"
               height="200"
-              src="/placeholder.svg"
-              style="aspect-ratio: 400/200; object-fit: cover"
-              width="400"
+              src="/img/destaque_AMARELO-26.png"
             />
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
-              <p class="text-gray-600 mb-2">
-                Conheça os principais acontecimentos da semana no IFSul.
+            <div class="news-content">
+              <h3 class="news-title">
+                Aluno do IFSul - Câmpus Sant'Ana do Livramento é premiado na
+                Olimpíada Nacional de Ciências
+              </h3>
+              <p class="news-description">
+                O aluno Thiago Chaves Lopes Xavier participou da Olimpíada
+                Nacional de Ciências, realizando tais provas nos meses de agosto
+                e setembro de 2023, onde foi premiado com medalha de prata.
               </p>
-              <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+              <a class="read-more" href="#">Leia mais</a>
             </div>
           </div>
         </div>
       </section>
-      <section
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"
-      >
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img
-            alt="News 4"
-            class="w-full h-32 object-cover"
-            height="200"
-            src="/placeholder.svg"
-            style="aspect-ratio: 400/200; object-fit: cover"
-            width="400"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
-            <p class="text-gray-600 mb-2">
-              Conheça os principais acontecimentos da semana no IFSul.
-            </p>
-            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
+      <section class="featured-news">
+        <div class="news-grid">
+          <div class="news-item">
+            <img
+              alt="News 1"
+              class="news-image"
+              height="200"
+              src="/img/evento.png"
+            />
+            <div class="news-content">
+              <h3 class="news-title">
+                Formatura do curso de Atendimento e Vendas - IFSul/SME
+              </h3>
+              <p class="news-description">
+                No último dia 16 de abril, no auditório da Unipampa, foram
+                formados pelo IFSul 53 estudantes de EJA (Educação de Jovens e
+                Adultos) das escolas Municipais Célia Irulegui, Dr. Abreu...
+              </p>
+              <a class="read-more" href="#">Leia mais</a>
+            </div>
+          </div>
+          <div class="news-item">
+            <img
+              alt="News 2"
+              class="news-image"
+              height="200"
+              src="/img/comunicado.png"
+            />
+            <div class="news-content">
+              <h3 class="news-title">Normas de Convivência</h3>
+              <p class="news-description">
+                IFSul - Câmpus Santana do Livramento divulga as Normas de
+                Convivência.
+              </p>
+              <a class="read-more" href="#">Leia mais</a>
+            </div>
+          </div>
+          <div class="news-item">
+            <img
+              alt="News 3"
+              class="news-image"
+              height="200"
+              src="/img/edital.jpg"
+            />
+            <div class="news-content">
+              <h3 class="news-title">
+                Edital 09/2024 - Identificação de Demanda dos Auxílios da
+                Assistência Estudantil
+              </h3>
+              <p class="news-description">
+                Conheça os principais acontecimentos da semana no IFSul.IFSul -
+                Câmpus Santana do Livramento divulga o edital de identificação
+                de demandas para concessão de Auxílios da Assistência
+                Estudantil.
+              </p>
+              <a class="read-more" href="#">Leia mais</a>
+            </div>
+          </div>
+          <div class="news-item">
+            <img
+              alt="News 4"
+              class="news-image"
+              height="200"
+              src="/img/destaque_AMARELO-26.png"
+            />
+            <div class="news-content">
+              <h3 class="news-title">
+                Aluno do IFSul - Câmpus Sant'Ana do Livramento é premiado na
+                Olimpíada Nacional de Ciências
+              </h3>
+              <p class="news-description">
+                O aluno Thiago Chaves Lopes Xavier participou da Olimpíada
+                Nacional de Ciências, realizando tais provas nos meses de agosto
+                e setembro de 2023, onde foi premiado com medalha de prata.
+              </p>
+              <a class="read-more" href="#">Leia mais</a>
+            </div>
           </div>
         </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img
-            alt="News 4"
-            class="w-full h-32 object-cover"
-            height="200"
-            src="/placeholder.svg"
-            style="aspect-ratio: 400/200; object-fit: cover"
-            width="400"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
-            <p class="text-gray-600 mb-2">
-              Conheça os principais acontecimentos da semana no IFSul.
-            </p>
-            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img
-            alt="News 4"
-            class="w-full h-32 object-cover"
-            height="200"
-            src="/placeholder.svg"
-            style="aspect-ratio: 400/200; object-fit: cover"
-            width="400"
-          />
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-2">Notícia 4</h3>
-            <p class="text-gray-600 mb-2">
-              Conheça os principais acontecimentos da semana no IFSul.
-            </p>
-            <a class="text-[#0072c6] hover:underline" href="#">Leia mais</a>
-          </div>
-        </div>
-        <!-- Repeat news items as needed -->
       </section>
-      <section class="bg-white rounded-lg shadow-md p-6 mt-8">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold">Próximo Processo Seletivo</h2>
-          <div class="bg-[#0072c6] text-white px-4 py-2 rounded-md">
-            <span class="font-bold">30/11/2024</span>
+      <section class="upcoming-event">
+        <div class="event-header">
+          <h2 class="event-title">Próximo Processo Seletivo</h2>
+          <div class="event-date">
+            <span>30/11/2024</span>
           </div>
         </div>
-        <p class="text-gray-600 mt-4 pseletivo"></p>
+        <p class="event-description pseletivo"></p>
       </section>
-      <section class="bg-white rounded-lg shadow-md p-6 mt-8">
-        <h2 class="text-2xl font-bold mb-4">Depoimentos de Estudantes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-gray-100 rounded-lg p-6">
-            <div class="flex items-center mb-4">
-              <img
-                alt="Student 1"
-                class="rounded-full mr-4"
-                height="48"
-                src="/placeholder.svg"
-                style="aspect-ratio: 48/48; object-fit: cover"
-                width="48"
-              />
-              <div>
-                <h3 class="text-lg font-bold">Maria Silva</h3>
-                <p class="text-gray-600">Estudante de Engenharia</p>
+      <section class="testimonials">
+        <div class="container">
+          <div class="id-depoimentos">
+            <div class="conteudo-destaque container-title estilo4">
+              <div class="container titulo-o-que-os-clientes-dizem">
+                <section class="titulo-bg titulosessao titulo p-0 bg-unfixed">
+                  <div class="texto-posicao align-title-center estilo4">
+                    <div
+                      class="titulo-box animate-o-que-os-clientes-dizem to-animate flex-center estilo4 animated fadeInDown"
+                    >
+                      <div class="estilo4_detalhes">
+                        <span class="line"></span>
+                        <h2
+                          class="title corTitulo corSec2 fonte_1 corTitulo estilo4"
+                        >
+                          Depoimentos de Estudantes
+                        </h2>
+                        <span class="line"></span>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
-            <p class="text-gray-700">
-              "O IFSul me proporcionou uma experiência incrível. Os professores
-              são muito dedicados e o ambiente é muito acolhedor."
-            </p>
-          </div>
-          <div class="bg-gray-100 rounded-lg p-6">
-            <div class="flex items-center mb-4">
-              <img
-                alt="Student 2"
-                class="rounded-full mr-4"
-                height="48"
-                src="/placeholder.svg"
-                style="aspect-ratio: 48/48; object-fit: cover"
-                width="48"
-              />
-              <div>
-                <h3 class="text-lg font-bold">João Oliveira</h3>
-                <p class="text-gray-600">Estudante de Informática</p>
+            <div class="row dp-6 get-hide">
+              <div id="testimonial-carousel" class="owl-carousel owl-theme">
+                <div class="item">
+                  <blockquote>
+                    <i class="fa fa-quote-left"></i>
+                    <p>
+                      O IFSul me proporcionou uma experiência incrível. Os
+                      professores são muito dedicados e o ambiente é muito
+                      acolhedor.
+                    </p>
+                  </blockquote>
+                  <div
+                    class="depoimentos-foto"
+                    style="
+                      background-image: url('https://avatars.githubusercontent.com/u/29117443?v=4.png');
+                    "
+                  ></div>
+                  <cite>Maria Silva, Estudante de Engenharia</cite>
+                </div>
+                <div class="item">
+                  <blockquote>
+                    <i class="fa fa-quote-left"></i>
+                    <p>
+                      Estou muito satisfeito com o IFSul. As aulas são
+                      dinâmicas e os laboratórios são muito bem equipados.
+                    </p>
+                  </blockquote>
+                  <div
+                    class="depoimentos-foto"
+                    style="
+                      background-image: url('https://avatars.githubusercontent.com/u/29117443?v=4.png');
+                    "
+                  ></div>
+                  <cite>João Oliveira Estudante de Informática</cite>
+                </div>
+                <div class="item">
+                  <blockquote>
+                    <i class="fa fa-quote-left"></i>
+                    <p>
+                      O IFSul me proporcionou uma formação de excelência. Estou
+                      muito orgulhosa de fazer parte dessa instituição.
+                    </p>
+                  </blockquote>
+                  <div
+                    class="depoimentos-foto"
+                    style="
+                      background-image: url('https://avatars.githubusercontent.com/u/29117443?v=4.png');
+                    "
+                  ></div>
+                  <cite>Ana Souza Estudante de Química </cite>
+                </div>
               </div>
             </div>
-            <p class="text-gray-700">
-              "Estou muito satisfeito com o IFSul. As aulas são dinâmicas e os
-              laboratórios são muito bem equipados."
-            </p>
-          </div>
-          <div class="bg-gray-100 rounded-lg p-6">
-            <div class="flex items-center mb-4">
-              <img
-                alt="Student 3"
-                class="rounded-full mr-4"
-                height="48"
-                src="/placeholder.svg"
-                style="aspect-ratio: 48/48; object-fit: cover"
-                width="48"
-              />
-              <div>
-                <h3 class="text-lg font-bold">Ana Souza</h3>
-                <p class="text-gray-600">Estudante de Química</p>
-              </div>
-            </div>
-            <p class="text-gray-700">
-              "O IFSul me proporcionou uma formação de excelência. Estou muito
-              orgulhosa de fazer parte dessa instituição."
-            </p>
           </div>
         </div>
       </section>
     </main>
-    <footer class="bg-[#0072c6] text-white py-8 px-6">
-      <div class="container mx-auto flex justify-between items-center">
+    <footer class="footer">
+      <div class="footer-content">
         <div>
-          <img
-            alt="IFSul Logo"
-            height="50"
-            src="img/Santana_resumida.png"
-            style="aspect-ratio: 150/50; object-fit: contain"
-            width="150"
-          />
-          <p class="mt-4">
+          <img alt="IFSul Logo" height="50" src="img/Santana_resumida.png" />
+          <p class="footer-description">
             Instituto Federal de Educação, Ciência e Tecnologia
             Sul-rio-grandense
           </p>
         </div>
-        <nav class="flex space-x-6">
-          <a class="hover:underline" href="#">Home</a>
-          <a class="hover:underline" href="#">Sobre</a>
-          <a class="hover:underline" href="#">Notícias</a>
-          <a class="hover:underline" href="#">Contato</a>
+        <nav class="footer-nav">
+          <a class="footer-link" href="index.html">Home</a>
+          <a class="footer-link" href="category.html">Sobre</a>
+          <a class="footer-link" href="category.html">Notícias</a>
+          <a class="footer-link" href="#">Contato</a>
         </nav>
       </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
   </body>
 </html>
