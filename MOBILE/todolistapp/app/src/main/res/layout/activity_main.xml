@@ -4,17 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="4dp"
+    tools:layout_editor_absoluteY="2dp">
+
+    <ImageView
+        android:layout_width="392dp"
+        android:layout_height="321dp"
+        android:background="@drawable/bg_circle_yellow"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-87dp"
+        tools:layout_editor_absoluteY="-6dp" />
+
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus praesent purus tincidunt ut cursus vitae. Nisl, vitae nulla lectus tortor, est a aliquam. Pretium netus "
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="468dp" />
+
+    <ImageView
+        android:layout_width="210dp"
+        android:layout_height="190dp"
+        android:background="@drawable/bg_main"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="209dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="Let’s get things done on time"
+        android:textFontWeight="950"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="430dp" />
 
     <Button
         android:id="@+id/continuar"
@@ -27,13 +55,5 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="MissingConstraints" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="159dp"
-        android:layout_height="124dp"
-        android:background="@color/black"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="-1dp"
-        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

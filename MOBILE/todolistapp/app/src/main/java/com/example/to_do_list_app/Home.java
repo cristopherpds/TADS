@@ -3,8 +3,12 @@ package com.example.to_do_list_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
     private AddTaskFragment addTaskFrag;
@@ -17,7 +21,17 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         addTaskFrag = new AddTaskFragment();
+
+
+
         viewTaskFragment = new ViewTaskFragment();
+        List<Task> mockTasks = Task.getMockTasks();
+
+        // Pasar datos al fragmento AddTaskFragment
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("tasks", (ArrayList<? extends Parcelable>) new ArrayList<>(mockTasks));
+        viewTaskFragment.setArguments(bundle);
+
         pomodorTask =new PomodorTaskFragment();
 
         navMenu = findViewById(R.id.menu);
