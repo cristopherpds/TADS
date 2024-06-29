@@ -52,7 +52,7 @@ public class CarroTest2 {
         t = new Transmissao("Automatica", 1, true, motor);
         farol = new Farol(true);
         sE = new SistemaEletrico(true, true, "Lítio", "Supercharger");
-        tC = new TanqueCombustivel(0, "Elétrico", 100);
+        tC = new TanqueCombustivel(100, "Elétrico", 100);
         motor = new Motor("Eletrico", 1020, 0, "Tesla", false, sE, tC);
         carro = new Carro2("Tesla", "Model S Plaid", 2024, 322, 1020, "Preto", 4.1, pneu, motor, banco, farol, t, porta,
                 sE, tC);

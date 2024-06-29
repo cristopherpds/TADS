@@ -11,10 +11,10 @@ public class Main {
         painel.configurarPneu(235, 45, "Radial", "Michelin");
         painel.configurarPorta(false, 4,false);
         painel.configurarSistemaEletrico(true, true,"Lítio", "Supercharger");
-        painel.configurarTanqueCombustivel(100, "Eletrico", 100);
+        painel.configurarTanqueCombustivel(100, "Eletrico", 0);
         painel.configurarTransmissao("Automatica", 1, true);
         
-        painel.sistemaEletrico.ligar();
+        //painel.sistemaEletrico.ligar();
         painel.teste();
     }
 }
