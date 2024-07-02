@@ -1,9 +1,14 @@
 package com.example.to_do_list_app;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task {
+public class Task implements Parcelable {
     private int id;
     private String title;
     private String description;
@@ -58,5 +63,16 @@ public class Task {
         tasks.add(new Task(6, "Preparar presentación", "Preparar slides para reunión", "2024-06-10"));
 
         return tasks;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(description);
     }
 }

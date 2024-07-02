@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Let’s get things done on time"
         android:textFontWeight="950"
+        android:textStyle="bold"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="89dp"
         tools:layout_editor_absoluteY="430dp" />

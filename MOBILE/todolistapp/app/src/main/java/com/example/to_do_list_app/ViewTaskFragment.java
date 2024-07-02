@@ -79,6 +79,7 @@ public class ViewTaskFragment extends Fragment {
         recyclerView.setAdapter(taskAdapter);
 
         return view;
+
     }
 
     /*@Override
