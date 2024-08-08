@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ExemploAulaApplication<ExemploAula>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ExemploAula.ExemploAulaApplication",
+            "projectName": "ExemploAula",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
