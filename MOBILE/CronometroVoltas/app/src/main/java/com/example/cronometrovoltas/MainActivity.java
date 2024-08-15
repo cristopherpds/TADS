@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        timerValue = (TextView) findViewById(R.id.timerValue);
-        startButton = (Button) findViewById(R.id.startButton);
-        lapButton = (Button) findViewById(R.id.lapButton);
-        lapList = (ListView) findViewById(R.id.lapList);
+        timerValue = findViewById(R.id.timerValue);
+        startButton =  findViewById(R.id.startButton);
+        lapButton =  findViewById(R.id.lapButton);
+        lapList =  findViewById(R.id.lapList);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lapTimes);
         lapList.setAdapter(adapter);
