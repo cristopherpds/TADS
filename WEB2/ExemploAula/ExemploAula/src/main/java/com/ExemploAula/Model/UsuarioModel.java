@@ -1,4 +1,4 @@
-package com.ExemploAula.Model;
+package com.ExemploAula.model;
 
 import java.io.Serializable;
 
@@ -26,7 +26,7 @@ public class UsuarioModel implements Serializable {
     @NotBlank
     private String senha;
 
-    @NotBlank
+    
     private String tipo;
 
     public int getId() {
