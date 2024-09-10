@@ -1,0 +1,3 @@
+[submodule "TESTES/testes-integracao-carro"]
+	path = TESTES/testes-integracao-carro
+	url = https://github.com/cristopherpds/testes-integracao-carro.git
