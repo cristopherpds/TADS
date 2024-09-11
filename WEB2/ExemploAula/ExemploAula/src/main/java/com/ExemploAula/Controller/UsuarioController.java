@@ -77,12 +77,12 @@ public class UsuarioController {
 
 		if (!usuarioOpt.isPresent()) {
 			msg.addFlashAttribute("erroEditar", "Usuário não encontrado");
-			return "redirect:/usuario/listar1/";
+			return "redirect:/usuario/listar/";
 		}
 
 		if (result.hasErrors()) {
 			msg.addFlashAttribute("erroEditar", "Erro ao editar usuário");
-			return "redirect:/usuario/listar2/";
+			return "redirect:/usuario/listar/";
 		}
 
 		UsuarioModel usuarioModel = usuarioOpt.get();
