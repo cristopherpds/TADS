@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +17,9 @@
         <label for="idCategoria">Categoria:</label>
         <select id="idCategoria" name="idCategoria" required>
             <option value="">Selecione uma categoria</option>
-            <th:block th:each="categoria : ${categorias}">
-                <option th:value="${categoria.id}" th:text="${categoria.nome}"></option>
-            </th:block>
+            
+                <option th:each="categoria : ${categorias} "th:value="${categoria.id}" th:text="${categoria.descricao}"></option>
+          </select>
             <input type="submit" value="Cadastrar">
     </form>
 </body>

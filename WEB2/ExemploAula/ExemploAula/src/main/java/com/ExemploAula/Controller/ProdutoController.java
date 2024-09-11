@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ExemploAula.dto.ProdutoDTO;
@@ -26,6 +27,8 @@ import jakarta.validation.Valid;
 public class ProdutoController {
     @Autowired
     ProdutoRepository repository;
+
+    @Autowired
     CategoriaRespository categoriaRepository;
 
     @GetMapping("/")
@@ -61,12 +64,12 @@ public class ProdutoController {
         return "redirect:../";
     }
 
+
     @GetMapping("/inserir")
-    public String showForm(Model model) {
-        List<CategoriaModel> categorias = categoriaRepository.findAll();
-        System.out.println(categorias);
-        model.addAttribute("categorias", categorias);
-        return "inserir";
-    }
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("produto/inserir");
+		mv.addObject("categorias", categoriaRepository.findAll());
+		return mv;
+	}
 
 }
