@@ -1,15 +1,14 @@
 package com.ExemploAula.controller;
 
-import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -41,7 +40,7 @@ public class ProdutoController {
         return "produto/inserir";
     }
 
-    @PostMapping("/inserir/")
+    @PostMapping("/inserir")
     public String inserirDB(@ModelAttribute @Valid ProdutoDTO produtoDTO, BindingResult result,
             RedirectAttributes msg) {
         if (result.hasErrors()) {
@@ -61,15 +60,26 @@ public class ProdutoController {
 
         repository.save(produtoModel);
         msg.addFlashAttribute("sucessoCadastrar", "Produto cadastrado!");
-        return "redirect:../";
+        return "redirect:/produto/listar/";
     }
 
 
     @GetMapping("/inserir")
-	public ModelAndView listar() {
+	public ModelAndView listarCategoria() {
 		ModelAndView mv = new ModelAndView("produto/inserir");
+        System.out.println(mv.toString());
 		mv.addObject("categorias", categoriaRepository.findAll());
 		return mv;
 	}
+
+    @GetMapping("/listar/")
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("produto/listar");
+		mv.addObject("produtos", repository.findAll());
+		return mv;
+	}
+
+    //listar produto
+
 
 }

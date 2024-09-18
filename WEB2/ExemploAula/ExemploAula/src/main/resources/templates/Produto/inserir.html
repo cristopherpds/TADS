@@ -15,11 +15,10 @@
         <label for="preco">Preco:</label>
         <input type="text" id="preco" name="preco" required>
         <label for="idCategoria">Categoria:</label>
-        <select id="idCategoria" name="idCategoria" required>
+        <select id="idCategoria" name="categoriaId" required>
             <option value="">Selecione uma categoria</option>
-            
-                <option th:each="categoria : ${categorias} "th:value="${categoria.id}" th:text="${categoria.descricao}"></option>
-          </select>
+            <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.descricao}"></option>
+        </select>
             <input type="submit" value="Cadastrar">
     </form>
 </body>
