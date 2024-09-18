@@ -6,14 +6,21 @@
 </head>
 <body>
     <h1>Editar Produto</h1>
-    <form th:object="${produto}" method="post">
+    <form th:object="${produtos}" method="post">
         <input type="hidden" th:field="*{id}" />
         <label>Nome:</label>
         <input type="text" id="nome" name="nome" th:field="*{nome}" />
-        <label>Descrição:</label>
-        <input type="text" id="descricao" name="descricao" th:field="*{descricao}" />
         <label>Preço:</label>
         <input type="text" id="preco" name="preco" th:field="*{preco}" />
+        <label for="idCategoria">Categoria:</label>
+        <select id="idCategoria" name="categoriaId" required>
+            <option value="">Selecione uma categoria</option>
+            <option th:each="categoria : ${categorias}" 
+                    th:value="${categoria.id}" 
+                    th:text="${categoria.descricao}"
+                    th:selected="${categoria.id == produtos.categoriaId ? 'selected' : ''}">
+            </option>
+        </select>
         <button type="submit">Salvar</button>
     </form>
 </body>

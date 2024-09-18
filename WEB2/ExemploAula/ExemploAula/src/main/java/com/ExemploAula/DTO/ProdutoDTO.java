@@ -1,6 +1,5 @@
 package com.ExemploAula.dto;
 
-import com.ExemploAula.model.CategoriaModel;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.NotBlank;
