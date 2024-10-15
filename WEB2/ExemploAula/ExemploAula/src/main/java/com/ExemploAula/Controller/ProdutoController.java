@@ -41,7 +41,7 @@ public class ProdutoController {
         return "produto/inserir";
     }
 
-    @PostMapping("/inserir/")
+    @PostMapping("/inserir")
     public String inserirDB(@ModelAttribute @Valid ProdutoDTO produtoDTO, BindingResult result,
             RedirectAttributes msg) {
         if (result.hasErrors()) {
