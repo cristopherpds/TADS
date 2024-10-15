@@ -1,3 +1,6 @@
+[submodule "ENGENHARIADESOFWARE/barberShop-projetoIntegraor"]
+	path = ENGENHARIADESOFWARE/barberShop-projetoIntegraor
+	url = https://github.com/cristopherpds/barberShop-projetoIntegraor.git
 [submodule "TESTES/testes-integracao-carro"]
 	path = TESTES/testes-integracao-carro
 	url = https://github.com/cristopherpds/testes-integracao-carro.git
