@@ -42,21 +42,22 @@ public class MainActivity extends AppCompatActivity {
         
                 
                     Log.d("MainActivity", "Number of songs: " + songs.size());
-                    Log.d("MainActivity", "Number of songs: " + response.body());
+
                     RecyclerView recyclerView = findViewById(R.id.recycler_view);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                     recyclerView.setAdapter(new SongAdapter(songs));
         
                     
                     ArrayList<String> urls = new ArrayList<>();
-for (Song song : songs) {
-    urls.add(song.getUrl());
-}
-Intent intent = new Intent(MainActivity.this, MusicPlayerService.class);
-intent.putStringArrayListExtra("urls", urls);
-startService(intent);
+                for (Song song : songs) {
+                    urls.add(song.getUrl());
                 }
-            }
+                                    Log.d("MainActivity", "Number of songs: " + urls);
+                Intent intent = new Intent(MainActivity.this, MusicPlayerService.class);
+                intent.putStringArrayListExtra("urls", urls);
+                startService(intent);
+                                }
+                            }
         
             @Override
             public void onFailure(Call<List<Song>> call, Throwable t) {
