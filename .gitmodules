@@ -4,3 +4,6 @@
 [submodule "TESTES/testes-integracao-carro"]
 	path = TESTES/testes-integracao-carro
 	url = https://github.com/cristopherpds/testes-integracao-carro.git
+[submodule "WEB2/Atividade1-spring"]
+	path = WEB2/Atividade1-spring
+	url = https://github.com/cristopherpds/Atividade1-spring.git

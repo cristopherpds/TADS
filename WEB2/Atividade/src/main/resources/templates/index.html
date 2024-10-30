@@ -2,28 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <title>Página Inicial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div layout:fragment="content">
-        <h1>Bem-vindo ao Sistema de Cursos</h1>
-        <div class="row">
-            <div class="col-md-4" th:each="categoria : ${categorias}">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${categoria.nome}"></h5>
-                        <a th:href="@{/cursos/categoria/{id}(id=${categoria.id})}" class="btn btn-primary">Ver Cursos</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <form th:action="@{/cursos/buscar}" method="get" class="mt-4">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar curso" name="nome">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                </div>
+    <div layout:fragment="content" class="container mx-auto px-4 py-8 bg-gray-200">
+        <h1 class="text-2xl font-bold mb-6">Bem-vindo ao Sistema de Cursos</h1>
+        
+        <!-- Menu de Categorias -->
+        <nav class="mb-6">
+            <ul class="flex space-x-4">
+                <li th:each="categoria : ${categorias}">
+                    <a th:href="@{/cursos/categoria/{id}(id=${categoria.id})}" class="text-blue-500 hover:underline" th:text="${categoria.nome}">Categoria</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Campo de Pesquisa -->
+        <form th:action="@{/cursos/buscar}" method="get" class="mb-6">
+            <div class="flex">
+                <input type="text" class="form-input w-64 rounded-l-md border-gray-300" placeholder="Buscar curso" name="nome">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600" type="submit">Buscar</button>
             </div>
         </form>
+
+        <!-- Lista de Cursos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div th:each="curso : ${cursos}" class="bg-white shadow-md rounded-lg p-4">
+                <h5 class="text-lg font-semibold mb-2" th:text="${curso.nome}">Nome do Curso</h5>
+                <img th:src="@{'/uploads/' + ${curso.imagem}}" alt="Imagem do Curso" class="w-full h-48 object-cover mb-4">
+                <p th:text="${curso.descricao}">Descrição do Curso</p>
+                <a th:href="@{/cursos/{id}(id=${curso.id})}" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Detalhes</a>
+            </div>
+        </div>
+
+        <!-- Controles de Paginação para Cursos -->
+        <div class="mt-6 flex items-center justify-between">
+            <div>
+                <p class="text-sm text-gray-700">
+                    Página <span th:text="${paginaCursos.number + 1}"></span> de <span th:text="${paginaCursos.totalPages}"></span>
+                </p>
+            </div>
+            <div class="flex space-x-2">
+                <a th:if="${paginaCursos.hasPrevious()}"
+                   th:href="@{/(page=${paginaCursos.number - 1})}"
+                   class="px-3 py-1 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Anterior</a>
+                <a th:if="${paginaCursos.hasNext()}"
+                   th:href="@{/(page=${paginaCursos.number + 1})}"
+                   class="px-3 py-1 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Próximo</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

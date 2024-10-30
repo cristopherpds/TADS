@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
-    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Sistema de Cursos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title th:text="${pageTitle}">Título Padrão</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Sistema de Cursos</a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/categorias">Categorias</a>
-            <a class="nav-item nav-link" href="/professores">Professores</a>
-            <a class="nav-item nav-link" href="/cursos">Cursos</a>
+    <nav class="bg-white dark:bg-gray-700 shadow">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a th:href="@{/}" class="text-xl font-semibold text-gray-800 dark:text-gray-200">Sistema de Cursos</a>
+            <div class="flex space-x-4">
+                <a th:href="@{/categorias}" class="text-gray-800 dark:text-gray-200 hover:text-blue-500">Categorias</a>
+                <a th:href="@{/professores}" class="text-gray-800 dark:text-gray-200 hover:text-blue-500">Professores</a>
+                <a th:href="@{/cursos}" class="text-gray-800 dark:text-gray-200 hover:text-blue-500">Cursos</a>
+            </div>
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mx-auto px-4 py-8">
         <div layout:fragment="content"></div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

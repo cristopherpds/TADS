@@ -3,7 +3,8 @@ package com.example.atividade1.atividade1.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.atividade1.atividade1.interfaces.CursoService;
@@ -15,12 +16,27 @@ import com.example.atividade1.atividade1.repositories.CursoRepository;
 public class CursoServiceImpl implements CursoService{
     
 
-    @Autowired
+
     private CursoRepository cursoRepository;
 
     @Override
     public List<Curso> findAll() {
         return cursoRepository.findAll();
+    }
+
+    @Override
+    public Page<Curso> findAll(Pageable pageable) {
+        return cursoRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Curso> findByCategoriaId(Long categoriaId, Pageable pageable) {
+        return cursoRepository.findByCategoriaId(categoriaId, pageable);
+    }
+
+    @Override
+    public Page<Curso> findByNomeContaining(String nome, Pageable pageable) {
+        return cursoRepository.findByNomeContainingIgnoreCase(nome, pageable);
     }
 
     @Override

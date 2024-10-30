@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Detalhes do Curso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div layout:fragment="content" class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6" th:text="${curso.nome}">Nome do Curso</h1>
+        <img th:src="@{'/uploads/' + ${curso.imagem}}" alt="Imagem do Curso" class="w-full h-64 object-cover mb-4">
+        <p><strong>Descrição:</strong> <span th:text="${curso.descricao}">Descrição</span></p>
+        <p><strong>Data de Início:</strong> <span th:text="${curso.dataInicio}">Data</span></p>
+        <p><strong>Data Final:</strong> <span th:text="${curso.dataFinal}">Data</span></p>
+        <p><strong>Categoria:</strong> <span th:text="${curso.categoria.nome}">Categoria</span></p>
+        <p><strong>Professor:</strong> <span th:text="${curso.professor.nome}">Professor</span></p>
+        <a href="/cursos" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Voltar</a>
+    </div>
+</body>
+</html>

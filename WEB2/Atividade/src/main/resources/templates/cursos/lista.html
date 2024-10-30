@@ -1,40 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <title>Lista de Cursos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div layout:fragment="content">
-        <h1>Lista de Cursos</h1>
-        <a href="/cursos/novo" class="btn btn-primary mb-3">Novo Curso</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Professor</th>
-                    <th>Categoria</th>
-                    <th>Data de Início</th>
-                    <th>Data Final</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="curso : ${cursos}">
-                    <td th:text="${curso.id}"></td>
-                    <img th:if="${curso.imagem}" th:src="@{'/uploads/' + ${curso.imagem}}" class="card-img-top" alt="Imagem do Curso">
-                    <td th:text="${curso.nome}"></td>
-                    <td th:text="${curso.professor.nome}"></td>
-                    <td th:text="${curso.categoria.nome}"></td>
-                    <td th:text="${#temporals.format(curso.dataInicio, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${#temporals.format(curso.dataFinal, 'dd/MM/yyyy')}"></td>
-                    <td>
-                        <a th:href="@{/cursos/{id}/editar(id=${curso.id})}" class="btn btn-sm btn-primary">Editar</a>
-                        <a th:href="@{/cursos/{id}/excluir(id=${curso.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este curso?')">Excluir</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div layout:fragment="content" class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6">Lista de Cursos</h1>
+        <a th:href="@{/cursos/novo}" class="inline-block mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Novo Curso</a>
+        <ul role="list" class="divide-y divide-gray-200">
+            <li th:each="curso : ${paginaCursos.content}" class="flex justify-between gap-x-6 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                    <img th:if="${curso.imagem}"
+                         th:src="@{'/uploads/' + ${curso.imagem}}"
+                         alt="Imagem do Curso"
+                         class="h-12 w-12 flex-none rounded-full bg-gray-50">
+                    <div class="min-w-0 flex-auto">
+                        <p class="text-sm font-semibold text-gray-900" th:text="${curso.nome}">Nome do Curso</p>
+                        <p class="mt-1 text-xs text-gray-500">
+                            Professor: <span th:text="${curso.professor.nome}">Nome do Professor</span>
+                        </p>
+                        <p class="mt-1 text-xs text-gray-500">
+                            Categoria: <span th:text="${curso.categoria.nome}">Nome da Categoria</span>
+                        </p>
+                        <p class="mt-1 text-xs text-gray-500">
+                            Início: <span th:text="${#temporals.format(curso.dataInicio, 'dd/MM/yyyy')}">01/01/2023</span>
+                            &nbsp;|&nbsp;
+                            Fim: <span th:text="${#temporals.format(curso.dataFinal, 'dd/MM/yyyy')}">31/12/2023</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-end">
+                    <div class="flex space-x-2">
+                        <a th:href="@{/cursos/{id}/editar(id=${curso.id})}"
+                           class="px-3 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600">Editar</a>
+                           <form th:action="@{/cursos/{id}/excluir(id=${curso.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Tem certeza que deseja excluir este curso?')">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Controles de Paginação -->
+        <div class="mt-6 flex items-center justify-between">
+            <div>
+                <p class="text-sm text-gray-700">
+                    Página <span th:text="${paginaCursos.number + 1}"></span> de <span th:text="${paginaCursos.totalPages}"></span>
+                </p>
+            </div>
+            <div class="flex space-x-2">
+                <a th:if="${paginaCursos.hasPrevious()}"
+                   th:href="@{/cursos(page=${paginaCursos.number - 1})}"
+                   class="px-3 py-1 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Anterior</a>
+                <a th:if="${paginaCursos.hasNext()}"
+                   th:href="@{/cursos(page=${paginaCursos.number + 1})}"
+                   class="px-3 py-1 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Próximo</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

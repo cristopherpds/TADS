@@ -2,30 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <title>Lista de Categorias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div layout:fragment="content">
-        <h1>Lista de Categorias</h1>
-        <a href="/categorias/novo" class="btn btn-primary mb-3">Nova Categoria</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="categoria : ${categorias}">
-                    <td th:text="${categoria.id}"></td>
-                    <td th:text="${categoria.nome}"></td>
-                    <td>
-                        <a th:href="@{/categorias/{id}/editar(id=${categoria.id})}" class="btn btn-sm btn-primary">Editar</a>
-                        <a th:href="@{/categorias/{id}/excluir(id=${categoria.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">Excluir</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div layout:fragment="content" class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6">Lista de Categorias</h1>
+        <a href="/categorias/novo" class="inline-block mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Nova Categoria</a>
+        <ul role="list" class="divide-y divide-gray-200">
+            <li th:each="categoria : ${paginaCategorias.content}" class="flex justify-between gap-x-6 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50" th:src="'https://via.placeholder.com/48?text=' + ${categoria.nome.substring(0,1).toUpperCase()}" alt="Categoria">
+                    <div class="min-w-0 flex-auto">
+                        <p class="text-sm font-semibold text-gray-900" th:text="${categoria.nome}">Nome da Categoria</p>
+                        <p class="mt-1 truncate text-xs text-gray-500" th:text="'ID: ' + ${categoria.id}">ID: 1</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-end">
+                    <div class="flex space-x-2">
+                        <a th:href="@{/categorias/{id}/editar(id=${categoria.id})}" class="px-3 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600">Editar</a>
+                        <form th:action="@{/categorias/{id}/excluir(id=${categoria.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Controles de Paginação -->
+        <div class="mt-6 flex items-center justify-between">
+            <div>
+                <p class="text-sm text-gray-700">
+                    Página <span th:text="${paginaCategorias.number + 1}"></span> de <span th:text="${paginaCategorias.totalPages}"></span>
+                </p>
+            </div>
+            <div class="flex space-x-2">
+                <a th:if="${paginaCategorias.hasPrevious()}"
+                   th:href="@{/categorias(page=${paginaCategorias.number - 1})}"
+                   class="px-3 py-1 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Anterior</a>
+                <a th:if="${paginaCategorias.hasNext()}"
+                   th:href="@{/categorias(page=${paginaCategorias.number + 1})}"
+                   class="px-3 py-1 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Próximo</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

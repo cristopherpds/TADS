@@ -1,9 +1,10 @@
 package com.example.atividade1.atividade1.controllers;
 
 import java.io.IOException;
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,20 +25,22 @@ import com.example.atividade1.atividade1.services.ProfessorService;
 @RequestMapping("/professores")
 public class ProfessorController {
     private final ProfessorService professorService;
+    private final FileStorageService fileStorageService;
 
-    @Autowired
-    public ProfessorController(ProfessorService professorService) {
+
+    public ProfessorController(ProfessorService professorService, FileStorageService fileStorageService) {
         this.professorService = professorService;
+        this.fileStorageService = fileStorageService;
     }
 
-    @Autowired
-    private FileStorageService fileStorageService;
 
 
     @GetMapping
-    public String listarProfessores(Model model) {
-        List<Professor> professores = professorService.findAll();
-        model.addAttribute("professores", professores);
+    public String listarProfessores(Model model, @RequestParam(defaultValue = "0") int page) {
+        int pageSize = 7;
+        Pageable pageable = PageRequest.of(page, pageSize);
+        Page<Professor> paginaProfessores = professorService.findAll(pageable);
+        model.addAttribute("paginaProfessores", paginaProfessores);
         return "professores/lista";
     }
 
@@ -59,7 +62,7 @@ public class ProfessorController {
                 String fileName = fileStorageService.storeFile(file);
                 professor.setFoto(fileName);
             } catch (IOException e) {
-                // Trate o erro adequadamente
+                e.printStackTrace();
             }
         }
         professorService.save(professor);
@@ -74,7 +77,7 @@ public class ProfessorController {
         return "professores/form";
     }
 
-    @GetMapping("/{id}/excluir")
+    @PostMapping("/{id}/excluir")
     public String excluirProfessor(@PathVariable Long id) {
         professorService.deleteById(id);
         return "redirect:/professores";

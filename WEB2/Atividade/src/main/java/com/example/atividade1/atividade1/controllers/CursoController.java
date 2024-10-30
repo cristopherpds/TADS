@@ -3,7 +3,10 @@ package com.example.atividade1.atividade1.controllers;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,23 +29,23 @@ public class CursoController {
     private final CursoService cursoService;
     private final ProfessorService professorService;
     private final CategoriaService categoriaService;
+    private final FileStorageService fileStorageService;
 
-    @Autowired
     public CursoController(CursoService cursoService, ProfessorService professorService,
-            CategoriaService categoriaService) {
+            CategoriaService categoriaService, FileStorageService fileStorageService) {
         this.cursoService = cursoService;
         this.professorService = professorService;
         this.categoriaService = categoriaService;
+        this.fileStorageService = fileStorageService;
     }
 
-    @Autowired
-    private FileStorageService fileStorageService;
-
-   
-
     @GetMapping
-    public String listarCursos(Model model) {
+    public String listarCursos(Model model,@RequestParam(defaultValue = "0") int page) {
+        int pageSize = 7;
         List<Curso> cursos = cursoService.findAll();
+        Pageable pageable = PageRequest.of(page, pageSize);
+        Page<Curso> paginaCursos = cursoService.findAll(pageable);
+        model.addAttribute("paginaCursos", paginaCursos);
         model.addAttribute("cursos", cursos);
         return "cursos/lista";
     }
@@ -55,11 +58,13 @@ public class CursoController {
         return "cursos/form";
     }
 
-    /* @PostMapping
-    public String salvarCurso(@ModelAttribute Curso curso) {
-        cursoService.save(curso);
-        return "redirect:/cursos";
-    } */
+    /*
+     * @PostMapping
+     * public String salvarCurso(@ModelAttribute Curso curso) {
+     * cursoService.save(curso);
+     * return "redirect:/cursos";
+     * }
+     */
     @PostMapping
     public String salvarCurso(@ModelAttribute Curso curso, @RequestParam("imagemFile") MultipartFile file) {
         if (!file.isEmpty()) {
@@ -67,7 +72,7 @@ public class CursoController {
                 String fileName = fileStorageService.storeFile(file);
                 curso.setImagem(fileName);
             } catch (IOException e) {
-                // Trate o erro adequadamente
+                e.printStackTrace();
             }
         }
         cursoService.save(curso);
@@ -84,23 +89,45 @@ public class CursoController {
         return "cursos/form";
     }
 
-    @GetMapping("/{id}/excluir")
+    @PostMapping("/{id}/excluir")
     public String excluirCurso(@PathVariable Long id) {
         cursoService.deleteById(id);
         return "redirect:/cursos";
     }
 
+
+
     @GetMapping("/categoria/{id}")
-    public String listarCursosPorCategoria(@PathVariable Long id, Model model) {
+    public String listarCursosPorCategoria(@PathVariable Long id, Model model, @RequestParam(defaultValue = "0") int page) {
+        int pageSize = 7;
+        Pageable pageable = PageRequest.of(page, pageSize);
+        Page<Curso> paginaCursos = cursoService.findByCategoriaId(id, pageable);
         List<Curso> cursos = cursoService.findByCategoriaId(id);
         model.addAttribute("cursos", cursos);
+        model.addAttribute("paginaCursos", paginaCursos);
+        model.addAttribute("cursos", paginaCursos.getContent());
         return "cursos/lista";
     }
 
     @GetMapping("/buscar")
-    public String buscarCursos(@RequestParam String nome, Model model) {
+    public String buscarCursos(@RequestParam String nome, Model model, @RequestParam(defaultValue = "0") int page) {
+        int pageSize = 7;
         List<Curso> cursos = cursoService.findByNomeContaining(nome);
+        Pageable pageable = PageRequest.of(page, pageSize);
+        Page<Curso> paginaCursos = cursoService.findByNomeContaining(nome, pageable);
+        model.addAttribute("paginaCursos", paginaCursos);
         model.addAttribute("cursos", cursos);
         return "cursos/lista";
+    }
+
+
+    
+
+    @GetMapping("/{id}")
+    public String detalhesCurso(@PathVariable Long id, Model model) {
+        Curso curso = cursoService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Curso inválido com id: " + id));
+        model.addAttribute("curso", curso);
+        return "cursos/detalhes";
     }
 }
