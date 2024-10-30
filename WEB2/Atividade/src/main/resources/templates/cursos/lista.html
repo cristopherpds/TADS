@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Lista de Cursos</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>Lista de Cursos</h1>
+        <a href="/cursos/novo" class="btn btn-primary mb-3">Novo Curso</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Professor</th>
+                    <th>Categoria</th>
+                    <th>Data de Início</th>
+                    <th>Data Final</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="curso : ${cursos}">
+                    <td th:text="${curso.id}"></td>
+                    <img th:if="${curso.imagem}" th:src="@{'/uploads/' + ${curso.imagem}}" class="card-img-top" alt="Imagem do Curso">
+                    <td th:text="${curso.nome}"></td>
+                    <td th:text="${curso.professor.nome}"></td>
+                    <td th:text="${curso.categoria.nome}"></td>
+                    <td th:text="${#temporals.format(curso.dataInicio, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#temporals.format(curso.dataFinal, 'dd/MM/yyyy')}"></td>
+                    <td>
+                        <a th:href="@{/cursos/{id}/editar(id=${curso.id})}" class="btn btn-sm btn-primary">Editar</a>
+                        <a th:href="@{/cursos/{id}/excluir(id=${curso.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este curso?')">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
