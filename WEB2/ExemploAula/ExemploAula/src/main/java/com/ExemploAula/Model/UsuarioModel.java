@@ -29,6 +29,8 @@ public class UsuarioModel implements Serializable {
     
     private String tipo;
 
+    private String imagem;
+
     public int getId() {
         return id;
     }
@@ -59,4 +61,12 @@ public class UsuarioModel implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    public String getImagem() {
+        return imagem;
+    }
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    
 }
