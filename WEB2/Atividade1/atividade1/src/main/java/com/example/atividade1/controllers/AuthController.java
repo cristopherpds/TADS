@@ -1,7 +1,18 @@
 package com.example.atividade1.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.atividade1.models.ProfessorModel;
@@ -9,93 +20,12 @@ import com.example.atividade1.models.TokenModel;
 import com.example.atividade1.services.ProfessorService;
 import com.example.atividade1.services.TokenService;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
-
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.client.RestTemplate;
-
-
-
-/* @Controller
-@RequestMapping("/auth")
-public class AuthController {
-
-    @Value("${resend.api.key}")
-    private String resendApiKey;
-
-    @Value("${resend.api.url}")
-    private String resendApiUrl;
-
-    @Autowired
-    private ProfessorService professorService;
-
-    @Autowired
-    private TokenService tokenService;
-
-    private final String RESEND_API_KEY = resendApiKey;
-    private final String RESEND_API_URL = resendApiUrl;
-
-    @PostMapping("/login")
-    public String login(@RequestParam String email) {
-        ProfessorModel professor = professorService.findByEmail(email);
-        if (professor != null) {
-            // Crear el token y asociarlo al profesor
-            TokenModel token = tokenService.createToken(professor);
-            String link = "http://localhost:8080/auth/verify?token=" + token.getToken();
-
-            // Preparar y enviar el correo electrónico a través de Resend
-            sendEmail(email, "Tu enlace mágico", "Haz clic en el siguiente enlace para iniciar sesión: " + link);
-            return "Se ha enviado un enlace mágico a tu correo.";
-        }
-        return "Email no encontrado.";
-    }
-
-    @GetMapping("/verify")
-    public String verify(@RequestParam String token) {
-        TokenModel validToken = tokenService.validateToken(token);
-        if (validToken != null) {
-            return "Inicio de sesión exitoso. Bienvenido " + validToken.getProfessor().getNome();
-        }
-        return "Token inválido o expirado.";
-    }
-
-    private void sendEmail(String to, String subject, String body) {
-        RestTemplate restTemplate = new RestTemplate();
-        
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + resendApiKey);
-        headers.set("Content-Type", "application/json");
-    
-        String requestBody = String.format(
-                "{\"from\":\"noreply@cristopher.paiva.me\",\"to\":\"%s\",\"subject\":\"%s\",\"text\":\"%s\"}",
-                to, subject, body
-        );
-    
-        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-    
-        ResponseEntity<String> response = restTemplate.exchange(
-                resendApiUrl,
-                HttpMethod.POST,
-                requestEntity,
-                String.class
-        );
-    
-        // Manejar la respuesta según sea necesario
-        if (response.getStatusCode().is2xxSuccessful()) {
-            System.out.println("Correo enviado exitosamente.");
-        } else {
-            System.out.println("Error al enviar el correo: " + response.getBody());
-        }
-    }
-} */
-
-
-/*@RestController
+@Controller
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -108,8 +38,16 @@ public class AuthController {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @GetMapping("/login")
+    public String login() {
+        return "login"; // Retorna a página de login (login.html)
+    }
+
     @PostMapping("/login")
-    public String login(@RequestParam String email) {
+    public String login(@RequestParam String email, Model model) throws MessagingException {
         ProfessorModel professor = professorService.findByEmail(email);
         if (professor != null) {
             // Crear el token y asociarlo al profesor
@@ -117,23 +55,52 @@ public class AuthController {
             String link = "http://localhost:8080/auth/verify?token=" + token.getToken();
 
             // Preparar y enviar el correo electrónico
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(email);
-            message.setSubject("Tu enlace mágico");
-            message.setText("Haz clic en el siguiente enlace para iniciar sesión: " + link);
-            mailSender.send(message);
-            return "Se ha enviado un enlace mágico a tu correo.";
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            try {
+                helper.setTo(email);
+                helper.setSubject("Tu enlace mágico");
+                helper.setText("<p>Haz clic en el siguiente enlace para iniciar sesión:</p><a href=\"" + link + "\">"
+                        + link + "</a>", true);
+                mailSender.send(message);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                model.addAttribute("message", "Error al enviar el correo." + e.getMessage());
+                return "login";
+            }
+            model.addAttribute("message", "Se ha enviado un enlace mágico a tu correo.");
+            return "confirmation";
         }
-        return "Email no encontrado.";
+        model.addAttribute("message", "Email no encontrado. Verifique com um administrador.");
+        return "login";
     }
 
     @GetMapping("/verify")
-    public String verify(@RequestParam String token) {
+    public String verify(@RequestParam String token, HttpSession session, Model model, HttpServletRequest request) {
         TokenModel validToken = tokenService.validateToken(token);
         if (validToken != null) {
-            // Aquí puedes iniciar la sesión del usuario, por ejemplo, generando un JWT o creando una sesión
-            return "Inicio de sesión exitoso. Bienvenido " + validToken.getProfessor().getNome();
+            session.setAttribute("userEmail", validToken.getProfessor().getEmail());
+
+            // Autenticar o usuário manualmente
+            UserDetails userDetails = userDetailsService.loadUserByUsername(validToken.getProfessor().getEmail());
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails,
+                    null, userDetails.getAuthorities());
+
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            System.out.println("Autenticando al usuario: " + validToken.getProfessor().getEmail());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            return "home";
         }
-        return "Token inválido o expirado.";
+        model.addAttribute("message", "Token inválido ou expirado.");
+        return "login";
     }
-}*/
+
+    @GetMapping("/checkLoginStatus")
+    @ResponseBody
+    public Map<String, Boolean> checkLoginStatus(HttpSession session) {
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("loggedIn", session.getAttribute("userEmail") != null);
+        return response;
+    }
+}

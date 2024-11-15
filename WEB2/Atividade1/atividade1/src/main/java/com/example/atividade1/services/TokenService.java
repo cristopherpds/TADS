@@ -9,15 +9,12 @@ import com.example.atividade1.repositories.TokenRepository;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.time.LocalDateTime;
 
 @Service
 public class TokenService {
-     /*public String generateToken() {
-        return UUID.randomUUID().toString();
-    }*/
     @Autowired
     private TokenRepository tokenRepository;
 

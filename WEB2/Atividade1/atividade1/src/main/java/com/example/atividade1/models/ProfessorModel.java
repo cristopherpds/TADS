@@ -17,6 +17,8 @@ public class ProfessorModel {
     private String nome;
     private String email;
     private String foto;
+    private String password;
+    private String role;
 
 
     public Long getId() {
@@ -43,11 +45,26 @@ public class ProfessorModel {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getFoto() {
         return foto;
     }
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

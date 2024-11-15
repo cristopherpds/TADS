@@ -1,4 +1,4 @@
-package com.example.atividade1.dto;
+package com.example.atividade1.atividade1.dtos;
 
 import java.util.Set;
 

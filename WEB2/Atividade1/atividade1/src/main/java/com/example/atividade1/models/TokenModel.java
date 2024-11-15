@@ -60,4 +60,8 @@ public class TokenModel {
     public void setExpirationTime(LocalDateTime expirationTime) {
         this.expirationTime = expirationTime;
     }
+
+    public boolean isExpired() {
+        return LocalDateTime.now().isAfter(this.expirationTime);
+    }
 }
