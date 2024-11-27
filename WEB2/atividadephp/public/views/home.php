@@ -6,7 +6,13 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <?php foreach ($jobs as $job): ?>
+    <?php 
+    // Asegúrate de que $jobs esté definido y sea un array
+    if (!isset($jobs) || !is_array($jobs)) {
+        $jobs = [];
+        
+    }
+    foreach ($jobs as $job): ?>
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
         <img src="<?php echo htmlspecialchars($job['image_url']); ?>" 
              alt="<?php echo htmlspecialchars($job['company']); ?>" 
@@ -35,5 +41,4 @@
     </div>
     <?php endforeach; ?>
 </div>
-
 <?php require 'layout/footer.php'; ?>

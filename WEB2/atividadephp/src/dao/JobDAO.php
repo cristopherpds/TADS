@@ -10,7 +10,6 @@ class JobDAO {
     public function __construct(PDO $db) {
         $this->db = $db;
     }
-
     public function create(Job $job) {
         $sql = "INSERT INTO jobs (title, description, company, location, requirements, 
                 contact_email, image_url, is_active, created_at) 

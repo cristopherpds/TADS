@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Solicitar permissão para notificações no Android 13+
+        // Solicitar permissão para notificações no Android
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_POST_NOTIFICATIONS);
